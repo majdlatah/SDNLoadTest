@@ -1,0 +1,38 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-neutron-0.5.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.aaa/features-aaa/0.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <feature name="odl-neutron-service" version="0.5.0-Lithium" description="OpenDaylight :: Neutron :: API">
+    <feature version="0.5.0-Lithium">odl-neutron-spi</feature>
+    <feature version="0.5.0-Lithium">odl-neutron-northbound-api</feature>
+    <feature version="0.5.0-Lithium">odl-neutron-transcriber</feature>
+  </feature>
+  <feature name="odl-neutron-northbound-api" version="0.5.0-Lithium" description="OpenDaylight :: Neutron :: Northbound">
+    <feature version="0.2.0-Lithium">odl-aaa-authn</feature>
+    <feature>war</feature>
+    <feature version="0.5.0-Lithium">odl-neutron-spi</feature>
+    <bundle>mvn:org.opendaylight.neutron/northbound-api/0.5.0-Lithium</bundle>
+    <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+    <bundle>mvn:com.sun.jersey/jersey-server/1.17</bundle>
+    <bundle>mvn:com.sun.jersey/jersey-servlet/1.17</bundle>
+    <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.moxy/2.5.2</bundle>
+    <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.core/2.5.2</bundle>
+    <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.antlr/2.5.2</bundle>
+    <bundle>mvn:org.osgi/org.osgi.core/5.0.0</bundle>
+  </feature>
+  <feature name="odl-neutron-spi" version="0.5.0-Lithium" description="OpenDaylight :: Neutron :: API">
+    <bundle>mvn:org.opendaylight.neutron/neutron-spi/0.5.0-Lithium</bundle>
+    <bundle>mvn:commons-net/commons-net/3.0.1</bundle>
+    <bundle>mvn:org.osgi/org.osgi.core/5.0.0</bundle>
+  </feature>
+  <feature name="odl-neutron-transcriber" version="0.5.0-Lithium" description="OpenDaylight :: Neutron :: Implementation">
+    <feature version="0.5.0-Lithium">odl-neutron-spi</feature>
+    <feature>war</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <bundle>mvn:org.opendaylight.neutron/transcriber/0.5.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.neutron/model/0.5.0-Lithium</bundle>
+    <bundle>mvn:org.osgi/org.osgi.core/5.0.0</bundle>
+    <configfile finalname="etc/opendaylight/karaf/neutron-transcriber-default-config.xml">mvn:org.opendaylight.neutron/transcriber/0.5.0-Lithium/xml/config</configfile>
+  </feature>
+</features>

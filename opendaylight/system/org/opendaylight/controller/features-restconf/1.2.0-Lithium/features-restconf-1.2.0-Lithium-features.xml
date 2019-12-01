@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-controller-1.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <!--
+        Necessary TODO: Please read the features guidelines:
+        https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Feature_Best_Practices
+    -->
+    <!--
+    Necessary TODO: Add repo entries for the repositories of features you refer to
+        in this feature file but do not define here.
+        Examples:
+            <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+            <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+            <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+    -->
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.aaa/features-aaa/0.2.0-Lithium/xml/features</repository>
+    <feature name='odl-restconf-all' version='1.2.0-Lithium' description='OpenDaylight :: Restconf :: All'>
+        <!--
+            Necessary TODO:
+            List all of the user consumable features you define in this feature file here.
+            Generally you would *not* list individual bundles here, but only features defined in *this* file.
+            It is useful to list them in the same order they occur in the file.
+
+            Examples:
+            <feature version='1.2.0-Lithium'>odl-controller-provider</feature>
+            <feature version='1.2.0-Lithium'>odl-controller-model</feature>
+        -->
+        <feature version='1.2.0-Lithium'>odl-restconf</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>
+    </feature>
+    <!--
+        Necessary TODO: Define your features.  It is useful to list then in order of dependency.  So if A depends on B, list A first.
+        When naming your features please be mindful of the guidelines:
+            https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines
+        Particularly:
+            a) Prefixing names with 'odl-': https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Feature_Naming
+            b) Descriptions: https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Description
+            c) Avoid start-levels: https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Avoid_start-levels
+
+        It's also nice to list inside a feature, first the features it needs, then the bundles it needs, then the configfiles.
+        Examples:
+
+        * Basic MD-SAL Provider
+        <feature name='odl-controller-provider' version='1.2.0-Lithium' description='OpenDaylight :: controller :: Provider '>
+            <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+            <feature version='1.2.0-Lithium'>odl-controller-model</feature>
+            <bundle>mvn:org.opendaylight.controller/controller-provider/1.2.0-Lithium</bundle>
+            ... whatever other bundles you need
+        </feature>
+
+        * Basic MD-SAL Model feature
+        <feature name='odl-controller-model' version='1.2.0-Lithium' description='OpenDaylight :: controller :: Model'>
+            <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+            <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+            <bundle>mvn:org.opendaylight.controller/controller-model/1.2.0-Lithium</bundle>
+            ... whatever other bundles you need
+        </feature>
+
+        * Config Subsystem example - the config file is your config subsystem configuration
+        <feature name='odl-controller-provider' version='1.2.0-Lithium' description='OpenDaylight :: controller :: Provider'>
+            <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+            <bundle>mvn:org.opendaylight.controller/controller-provider/1.2.0-Lithium</bundle>
+            <configfile finalname="etc/opendaylight/karaf/80-controller.xml">mvn:org.opendaylight.controller/controller-config/1.2.0-Lithium/xml/config</configfile>
+            ... whatever other bundles you need
+        </feature>
+
+        * Basic MD-SAL Provider that uses openflowplugin-flow-services (which brings along odl-mdsal-broker)
+        <feature name='odl-controller-provider' version='1.2.0-Lithium' description='OpenDaylight :: controller :: Provider'>
+            <feature version='0.1.0-Lithium'>odl-openflowplugin-flow-services</feature>
+            <bundle>mvn:org.opendaylight.controller/controller-provider/1.2.0-Lithium</bundle>
+            ... whatever other bundles you need
+        </feature>
+
+    -->
+
+    <feature name='odl-restconf' version='1.2.0-Lithium' description="OpenDaylight :: Restconf">
+        <feature version='0.2.0-Lithium'>odl-aaa-authn</feature>
+        <feature version='1.2.0-Lithium'>odl-restconf-noauth</feature>
+    </feature>
+    <feature name='odl-restconf-noauth' version='1.2.0-Lithium' description="OpenDaylight :: Restconf">
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <feature>war</feature>
+        <!-- presently we need sal-remote to be listed BEFORE sal-rest-connector because sal-rest-connector
+             has a yang file which augments a yang file in sal-remote, and order seems to matter -->
+        <bundle>mvn:org.opendaylight.controller/sal-remote/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-rest-connector/1.2.0-Lithium</bundle>
+        <bundle>mvn:com.google.code.gson/gson/2.2.4</bundle>
+        <bundle>mvn:org.opendaylight.yangtools/yang-data-codec-gson/0.7.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.yangtools/yang-model-export/0.7.0-Lithium</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-server/1.17</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-servlet/1.17</bundle>
+        <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+        <bundle>mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+        <bundle>mvn:io.netty/netty-codec-http/4.0.26.Final</bundle>
+        <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+        <bundle>mvn:io.netty/netty-handler/4.0.26.Final</bundle>
+        <bundle>mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+        <configfile finalname="etc/opendaylight/karaf/10-rest-connector.xml">mvn:org.opendaylight.controller/sal-rest-connector-config/1.2.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name ='odl-mdsal-apidocs' version='1.2.0-Lithium' description="OpenDaylight :: MDSAL :: APIDOCS">
+        <feature version='1.2.0-Lithium'>odl-restconf</feature>
+        <bundle>mvn:org.opendaylight.controller/sal-rest-docgen/1.2.0-Lithium</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-json-org/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.3.2</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-server/1.17</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-servlet/1.17</bundle>
+        <bundle>wrap:mvn:org.json/json/20131018</bundle>
+    </feature>
+
+    <feature name='odl-toaster-rest' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-restconf</feature>
+        <feature version='1.2.0-Lithium'>odl-toaster</feature>
+    </feature>
+
+    <feature name='odl-toaster-ui' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-xsql</feature>
+        <feature version='1.2.0-Lithium'>odl-toaster-rest</feature>
+    </feature>
+    <!-- Optional TODO: Remove TODO Comments -->
+
+</features>

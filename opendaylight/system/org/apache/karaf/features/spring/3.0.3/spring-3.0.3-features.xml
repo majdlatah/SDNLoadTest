@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="spring-3.0.3">
+    <feature name="spring-dm" version="1.2.1" description="Spring DM support" resolver="(obr)">
+        <feature version="[2.5.6,4)">spring</feature>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/3.0_1</bundle>
+        <bundle start-level="30">mvn:org.springframework.osgi/spring-osgi-io/1.2.1</bundle>
+        <bundle start-level="30">mvn:org.springframework.osgi/spring-osgi-core/1.2.1</bundle>
+        <bundle start-level="30">mvn:org.springframework.osgi/spring-osgi-extender/1.2.1</bundle>
+        <bundle start-level="30">mvn:org.springframework.osgi/spring-osgi-annotation/1.2.1</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/3.0.3</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.bundle/org.apache.karaf.bundle.springstate/3.0.3</bundle>
+    </feature>
+    <feature name="spring-dm-web" version="1.2.1" description="Spring DM Web support" resolver="(obr)">
+        <feature version="1.2.1">spring-dm</feature>
+        <feature version="[2.5.6,4)">spring-web</feature>
+        <feature>http</feature>
+        <bundle start-level="30">mvn:org.springframework.osgi/spring-osgi-web/1.2.1</bundle>
+    </feature>
+    <feature name="spring" version="3.1.4.RELEASE" description="Spring 3.1.x support" resolver="(obr)">
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/1.0_6</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-core/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-asm/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-expression/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-beans/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-aop/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-context/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-context-support/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/3.0.3</bundle>
+    </feature>
+    <feature name="spring-aspects" version="3.1.4.RELEASE" description="Spring 3.1.x AOP support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-aspects/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-instrument" version="3.1.4.RELEASE" description="Spring 3.1.x Instrument support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-instrument/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-jdbc" version="3.1.4.RELEASE" description="Spring 3.1.x JDBC support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring-tx</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-jdbc/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-jms" version="3.1.4.RELEASE" description="Spring 3.1.x JMS support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring-tx</feature>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-jms/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-struts" version="3.1.4.RELEASE" description="Spring 3.1.x Struts support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring-web</feature>
+        <feature>war</feature>
+        <bundle start-level="30" dependency="true">mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle start-level="30" dependency="true">mvn:commons-beanutils/commons-beanutils/1.9.2</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.struts/1.3.10_1</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-struts/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-test" version="3.1.4.RELEASE" description="Spring 3.1.x Test support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-test/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-orm" version="3.1.4.RELEASE" description="Spring 3.1.x ORM support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-orm/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-oxm" version="3.1.4.RELEASE" description="Spring 3.1.x OXM support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-oxm/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-tx" version="3.1.4.RELEASE" description="Spring 3.1.x Transaction (TX) support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-tx/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-web" version="3.1.4.RELEASE" description="Spring 3.1.x Web support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring</feature>
+        <feature>http</feature>
+        <bundle start-level="30">mvn:org.springframework/spring-web/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-webmvc/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring-web-portlet" version="3.1.4.RELEASE" description="Spring 3.1.x Web Portlet support" resolver="(obr)">
+        <feature version="[3.1.4.RELEASE,3.2)">spring-web</feature>
+        <bundle start-level="30" dependency="true">mvn:javax.portlet/portlet-api/2.0</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-webmvc-portlet/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="spring" version="3.2.11.RELEASE_1" description="Spring 3.2.x support" resolver="(obr)">
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/1.0_6</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-core/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-expression/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-beans/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aop/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context-support/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/3.0.3</bundle>
+    </feature>
+    <feature name="spring-aspects" version="3.2.11.RELEASE_1" description="Spring 3.2.x AOP support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aspects/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-instrument" version="3.2.11.RELEASE_1" description="Spring 3.2.x Instrument support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-instrument/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jdbc" version="3.2.11.RELEASE_1" description="Spring 3.2.x JDBC support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring-tx</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jms" version="3.2.11.RELEASE_1" description="Spring 3.2.x JMS support" resolver="(obr)">
+        <feature version="[3.2.11.RELEASE_1,3.3)">spring-tx</feature>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-struts" version="3.2.11.RELEASE_1" description="Spring 3.2.x Struts support" resolver="(obr)">
+        <feature version="[3.2.11.RELEASE_1,3.3)">spring-web</feature>
+        <feature>war</feature>
+        <bundle start-level="30" dependency="true">mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle start-level="30" dependency="true">mvn:commons-beanutils/commons-beanutils/1.9.2</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.struts/1.3.10_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-struts/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-test" version="3.2.11.RELEASE_1" description="Spring 3.2.x Test support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-test/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-orm" version="3.2.11.RELEASE_1" description="Spring 3.2.x ORM support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-oxm" version="3.2.11.RELEASE_1" description="Spring 3.2.x OXM support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-oxm/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-tx" version="3.2.11.RELEASE_1" description="Spring 3.2.x Transaction (TX) support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-tx/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web" version="3.2.11.RELEASE_1" description="Spring 3.2.x Web support" resolver="(obr)">
+        <feature version="3.2.11.RELEASE_1">spring</feature>
+        <feature>http</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/3.2.11.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web-portlet" version="3.2.11.RELEASE_1" description="Spring 3.2.x Web Portlet support" resolver="(obr)">
+        <feature version="[3.2.11.RELEASE_1,3.3)">spring-web</feature>
+        <bundle start-level="30" dependency="true">mvn:javax.portlet/portlet-api/2.0</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc-portlet/3.2.11.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring" version="4.0.7.RELEASE_1" description="Spring 4.0.x support" resolver="(obr)">
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/1.0_6</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-core/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-expression/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-beans/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aop/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context-support/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/3.0.3</bundle>
+    </feature>
+    <feature name="spring-aspects" version="4.0.7.RELEASE_1" description="Spring 4.0.x AOP support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aspects/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-instrument" version="4.0.7.RELEASE_1" description="Spring 4.0.x Instrument support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-instrument/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jdbc" version="4.0.7.RELEASE_1" description="Spring 4.0.x JDBC support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring-tx</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jms" version="4.0.7.RELEASE_1" description="Spring 4.0.x JMS support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring-tx</feature>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-test" version="4.0.7.RELEASE_1" description="Spring 4.0.x Test support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-test/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-orm" version="4.0.7.RELEASE_1" description="Spring 4.0.x ORM support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-oxm" version="4.0.7.RELEASE_1" description="Spring 4.0.x OXM support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-oxm/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-tx" version="4.0.7.RELEASE_1" description="Spring 4.0.x Transaction (TX) support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-tx/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web" version="4.0.7.RELEASE_1" description="Spring 4.0.x Web support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring</feature>
+        <feature>http</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/4.0.7.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web-portlet" version="4.0.7.RELEASE_1" description="Spring 4.0.x Web Portlet support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring-web</feature>
+        <bundle start-level="30" dependency="true">mvn:javax.portlet/portlet-api/2.0</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc-portlet/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-websocket" version="4.0.7.RELEASE_1" description="Spring 4.0.x WebSocket support" resolver="(obr)">
+        <feature version="[4.0.7.RELEASE_1,4.1)">spring-web</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-websocket/4.0.7.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring" version="4.1.2.RELEASE_1" description="Spring 4.1.x support" resolver="(obr)">
+        <details>Spring Support</details>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/1.0_6</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-core/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-expression/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-beans/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aop/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context-support/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/3.0.3</bundle>
+    </feature>
+    <feature name="spring-aspects" version="4.1.2.RELEASE_1" description="Spring 4.1.x AOP support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aspects/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-instrument" version="4.1.2.RELEASE_1" description="Spring 4.1.x Instrument support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-instrument/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jdbc" version="4.1.2.RELEASE_1" description="Spring 4.1.x JDBC support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring-tx</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-jms" version="4.1.2.RELEASE_1" description="Spring 4.1.x JMS support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring-tx</feature>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-test" version="4.1.2.RELEASE_1" description="Spring 4.1.x Test support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-test/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-orm" version="4.1.2.RELEASE_1" description="Spring 4.1.x ORM support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-oxm" version="4.1.2.RELEASE_1" description="Spring 4.1.x OXM support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-oxm/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-tx" version="4.1.2.RELEASE_1" description="Spring 4.1.x Transaction (TX) support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-tx/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web" version="4.1.2.RELEASE_1" description="Spring 4.1.x Web support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring</feature>
+        <feature>http</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/4.1.2.RELEASE_1</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-web-portlet" version="4.1.2.RELEASE_1" description="Spring 4.1.x Web Portlet support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring-web</feature>
+        <bundle start-level="30" dependency="true">mvn:javax.portlet/portlet-api/2.0</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc-portlet/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-websocket" version="4.1.2.RELEASE_1" description="Spring 4.1.x WebSocket support" resolver="(obr)">
+        <feature version="[4.1.2.RELEASE_1,4.2)">spring-web</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-websocket/4.1.2.RELEASE_1</bundle>
+    </feature>
+    <feature name="spring-security" version="3.1.4.RELEASE" description="Spring Security 3.1.x support" resolver="(obr)">
+        <feature>war</feature>
+        <feature>spring-dm-web</feature>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/1.7.4_1</bundle>
+        <bundle start-level="30">mvn:org.springframework.security/spring-security-core/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework.security/spring-security-config/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework.security/spring-security-web/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework.security/spring-security-acl/3.1.4.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.springframework.security/spring-security-taglibs/3.1.4.RELEASE</bundle>
+    </feature>
+    <feature name="gemini-blueprint" version="1.0.0.RELEASE" description="Gemini Blueprint Extender" resolver="(obr)">
+        <feature version="[3,4)">spring</feature>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-io/1.0.0.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-core/1.0.0.RELEASE</bundle>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-extender/1.0.0.RELEASE</bundle>
+    </feature>
+</features>

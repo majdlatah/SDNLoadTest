@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2015 Cisco Systems, Inc. and others.  All rights reserved.
+  ~
+  ~ This program and the accompanying materials are made available under the
+  ~ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+  ~ and is available at http://www.eclipse.org/legal/epl-v10.html
+  -->
+
+<features name="openflowplugin-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowjava/features-openflowjava/0.6.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <!-- repository>mvn:org.opendaylight.controller/features-netconf-connector/0.3.0-Lithium/xml/features</repository -->
+
+    <feature name='odl-openflowplugin-all' description="OpenDaylight :: Openflow Plugin :: All" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services-rest</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services-ui</feature>
+    </feature>
+
+    <feature name='odl-openflowplugin-southbound' description="OpenDaylight :: Openflow Plugin :: SouthBound" version='0.1.0-Lithium'>
+        <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-nsf-model</feature>
+        <feature version="0.6.0-Lithium">odl-openflowjava-protocol</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin-common/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin-api/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin-extension-api/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/liblldp/0.9.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/inventory-manager/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/statistics-manager/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/30-statistics-manager.xml">mvn:org.opendaylight.openflowplugin.applications/statistics-manager-config/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/40-inventory-manager.xml">mvn:org.opendaylight.openflowplugin.applications/inventory-manager/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/42-openflowplugin-He.xml">mvn:org.opendaylight.openflowplugin/openflowplugin-controller-config/0.1.0-Lithium/xml/config-He</configfile>
+        <configfile finalname="etc/opendaylight/karaf/43-msg-spy.xml">mvn:org.opendaylight.openflowplugin/openflowplugin-controller-config/0.1.0-Lithium/xml/configmsgspy</configfile>
+    </feature>
+
+    <feature name='odl-openflowplugin-flow-services' description="OpenDaylight :: Openflow Plugin :: Flow Services" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-app-config-pusher</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-app-lldp-speaker</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-nsf-services</feature>
+    </feature>
+
+    <feature name='odl-openflowplugin-nsf-services' version='0.1.0-Lithium'
+        description="OpenDaylight :: OpenflowPlugin :: NSF :: Services">
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <feature version='0.1.0-Lithium'>odl-openflowplugin-nsf-model</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin-common/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/topology-manager/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/topology-lldp-discovery/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/forwardingrules-manager/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/liblldp/0.9.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/30-forwardingrules-manager.xml">mvn:org.opendaylight.openflowplugin.applications/forwardingrules-manager-config/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/72-topology-lldp-discovery.xml">mvn:org.opendaylight.openflowplugin.applications/topology-lldp-discovery/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/73-topology-manager.xml">mvn:org.opendaylight.openflowplugin.applications/topology-manager/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <feature name='odl-openflowplugin-nsf-model' version='0.1.0-Lithium'
+        description="OpenDaylight :: OpenflowPlugin :: NSF :: Model">
+        <!-- general models -->
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <bundle>mvn:org.opendaylight.controller.model/model-inventory/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller.model/model-topology/1.2.0-Lithium</bundle>
+        <!-- openflow specific models -->
+        <bundle>mvn:org.opendaylight.openflowplugin.model/model-flow-base/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.model/model-flow-statistics/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.model/model-flow-service/0.1.0-Lithium</bundle>
+    </feature>
+
+    <feature name='odl-openflowplugin-flow-services-rest' description="OpenDaylight :: Openflow Plugin :: Flow Services :: REST" version='0.1.0-Lithium'>
+        <!-- feature version="0.3.0-Lithium">odl-netconf-connector-ssh</feature -->
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services</feature>
+        <feature version="1.2.0-Lithium">odl-restconf</feature>
+    </feature>
+    <feature name='odl-openflowplugin-flow-services-ui' description="OpenDaylight :: Openflow Plugin :: Flow Services :: UI" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services-rest</feature>
+        <feature version="0.2.0-Lithium">odl-dlux-core</feature>
+        <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+        <feature version="1.2.0-Lithium">odl-mdsal-xsql</feature>
+    </feature>
+
+    <!-- CBENCH TESTING -->
+    <feature name='odl-openflowplugin-drop-test' description="OpenDaylight :: Openflow Plugin :: Drop Test" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin/test-common/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/drop-test-karaf/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/69-drop-test.xml">mvn:org.opendaylight.openflowplugin/drop-test-karaf/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <!-- APPLICATIONS -->
+    <feature name='odl-openflowplugin-app-table-miss-enforcer' description="OpenDaylight :: Openflow Plugin :: Application - table-miss-enforcer" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/table-miss-enforcer/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/69-table-miss-enforcer.xml">mvn:org.opendaylight.openflowplugin.applications/table-miss-enforcer/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name='odl-openflowplugin-app-config-pusher' description="OpenDaylight :: Openflow Plugin :: app - default config-pusher" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/of-switch-config-pusher/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/70-of-switch-config-pusher.xml">mvn:org.opendaylight.openflowplugin.applications/of-switch-config-pusher/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <feature name='odl-openflowplugin-app-lldp-speaker' description="OpenDaylight :: Openflow Plugin :: app lldp-speaker" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/topology-lldp-discovery/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/lldp-speaker/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/71-lldp-speaker.xml">mvn:org.opendaylight.openflowplugin.applications/lldp-speaker/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/72-topology-lldp-discovery.xml">mvn:org.opendaylight.openflowplugin.applications/topology-lldp-discovery/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <feature name='odl-openflowplugin-app-bulk-o-matic' description="OpenDaylight :: Openflow Plugin :: app bulk flow operations support" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <bundle>mvn:org.opendaylight.openflowplugin.applications/bulk-o-matic/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/71-bulk-o-matic.xml">mvn:org.opendaylight.openflowplugin.applications/bulk-o-matic/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+
+</features>

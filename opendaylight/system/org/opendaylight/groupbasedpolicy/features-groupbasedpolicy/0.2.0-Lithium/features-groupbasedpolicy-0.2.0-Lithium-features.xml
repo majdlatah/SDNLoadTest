@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-groupbasedpolicy-0.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <!-- Repos needed by all -->
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+
+    <!-- Repos needed by the OpenFlow Overlay renderer -->
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin-extension/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.ovsdb/southbound-features/1.1.0-Lithium/xml/features</repository>
+
+
+    <!-- Repos needed by the Neutron Mapper -->
+    <repository>mvn:org.opendaylight.neutron/features-neutron/0.5.0-Lithium/xml/features</repository>
+   <!-- Repos needed by ofoverlay for SFC -->
+    <repository>mvn:org.opendaylight.sfc/features-sfc/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc-sb-rest/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc-netconf/0.1.0-Lithium/xml/features</repository>
+    <!-- Repos needed by the UI Backend -->
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+	
+	<!-- Repos needed by the UI -->
+    <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+
+    <repository>mvn:org.opendaylight.sfc/features-sfc-ovs/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfcofl2/0.1.0-Lithium/xml/features</repository>
+    <!-- The common GBP components -->
+    <feature name='odl-groupbasedpolicy-base' version='0.2.0-Lithium' description='OpenDaylight :: groupbasedpolicy :: Base Copmonents'>
+        <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/groupbasedpolicy/0.2.0-Lithium</bundle>
+    </feature>
+
+    <!--
+        The OpenFlow Overlay renderer.
+
+        This can be added to the base to enable a
+        Network Virtualization behavior using OpenFlow
+    -->
+    <feature name='odl-groupbasedpolicy-ofoverlay' version='0.2.0-Lithium' description='OpenDaylight :: groupbasedpolicy :: OpenFlow Overlay Renderer'>
+        <feature version="0.2.0-Lithium">odl-groupbasedpolicy-base</feature>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services</feature>
+        <feature version='0.1.0-Lithium'>odl-openflowplugin-nxm-extensions</feature>
+        <feature version='1.1.0-Lithium'>odl-ovsdb-southbound-impl</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-core</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-test-consumer</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-sb-rest</feature>
+        <feature version='0.1.0-Lithium'>odl-sfcofl2</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-ovs</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-netconf</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-ui</feature>
+        <bundle>mvn:commons-net/commons-net/3.0.1</bundle>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/ofoverlay-renderer/0.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/15-groupbasedpolicy-ofoverlay.xml">mvn:org.opendaylight.groupbasedpolicy/groupbasedpolicy-ofoverlay-config/0.2.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <!--
+         The Neutron provider
+    -->
+    <feature name='odl-groupbasedpolicy-neutronmapper' version='0.2.0-Lithium' description='OpenDaylight :: groupbasedpolicy :: Neutron Mapper mapps neutron APIs to GBP APIs '>
+        <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+        <feature version="0.5.0-Lithium">odl-neutron-service</feature>
+        <feature version="0.2.0-Lithium">odl-groupbasedpolicy-base</feature>
+        <feature version="0.2.0-Lithium">odl-groupbasedpolicy-ofoverlay</feature>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/neutron-mapper/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/neutron-ovsdb/0.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/15-neutron-mapper.xml">mvn:org.opendaylight.groupbasedpolicy/neutron-mapper-config/0.2.0-Lithium/xml/config</configfile>
+        <configfile finalname="etc/opendaylight/karaf/15-neutron-ovsdb.xml">mvn:org.opendaylight.groupbasedpolicy/neutron-ovsdb-config/0.2.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <!--
+         The UI Backend
+    -->
+    <feature name='odl-groupbasedpolicy-uibackend' version='0.2.0-Lithium' description='OpenDaylight :: groupbasedpolicy :: UI Backend provides APIs for UI '>
+        <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+        <feature version="0.2.0-Lithium">odl-groupbasedpolicy-base</feature>
+        <feature version="1.2.0-Lithium">odl-restconf</feature>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/ui-backend/0.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/15-ui-backend.xml">mvn:org.opendaylight.groupbasedpolicy/ui-backend-config/0.2.0-Lithium/xml/config</configfile>
+    </feature>
+	
+    <!--
+         UI
+    -->
+    <feature name='odl-groupbasedpolicy-ui' version='0.2.0-Lithium' description='OpenDaylight :: groupbasedpolicy :: DLUX UI '>
+        <feature version="0.2.0-Lithium">odl-dlux-core</feature>
+        <feature version="0.2.0-Lithium">odl-dlux-yangvisualizer</feature>
+        <feature version="0.2.0-Lithium">odl-groupbasedpolicy-uibackend</feature>
+        <bundle>mvn:org.opendaylight.groupbasedpolicy/groupbasedpolicy-ui-bundle/0.2.0-Lithium</bundle>
+    </feature>
+</features>

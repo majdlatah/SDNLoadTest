@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+    Copyright (c) 2013 Cisco Systems, Inc. and others.  All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v1.0 which accompanies this distribution,
+    and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<snapshot>
+    <required-capabilities>
+        <capability>urn:opendaylight:params:xml:ns:yang:bgp-linkstate?module=bgp-linkstate&amp;revision=2015-02-10</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:bgp-types?module=bgp-types&amp;revision=2013-09-19</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:bgp:linkstate?module=odl-bgp-linkstate-cfg&amp;revision=2013-11-15</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:bgp:flowspec?module=odl-bgp-flowspec-cfg&amp;revision=2015-04-23</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi?module=odl-bgp-parser-spi-cfg&amp;revision=2013-11-15</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi?module=odl-bgp-rib-spi-cfg&amp;revision=2013-11-15</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl?module=odl-bgp-rib-impl-cfg&amp;revision=2013-04-09</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding?module=opendaylight-md-sal-binding&amp;revision=2013-10-28</capability>
+        <capability>urn:opendaylight:params:xml:ns:yang:controller:netty?module=netty&amp;revision=2013-11-19</capability>
+    </required-capabilities>
+    <configuration>
+
+        <data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <modules xmlns="urn:opendaylight:params:xml:ns:yang:controller:config">
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">prefix:bgp-extensions-impl</type>
+                    <name>global-bgp-extensions</name>
+                    <extension>
+                        <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extension</type>
+                        <name>base-bgp-parser</name>
+                    </extension>
+                    <extension>
+                        <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extension</type>
+                        <name>bgp-linkstate</name>
+                    </extension>
+                    <extension>
+                        <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extension</type>
+                        <name>bgp-flowspec</name>
+                    </extension>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:base-bgp-parser</type>
+                    <name>base-bgp-parser</name>
+                </module>
+                <!-- Global bgp peer registry that should contain all configured bgp peers -->
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:strict-bgp-peer-registry</type>
+                    <name>global-bgp-peer-registry</name>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">prefix:bgp-rib-extensions-impl</type>
+                    <name>global-rib-extensions</name>
+                    <extension>
+                        <type xmlns:ribspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">ribspi:extension</type>
+                        <name>base-bgp-rib</name>
+                    </extension>
+                    <extension>
+                        <type xmlns:ribspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">ribspi:extension</type>
+                        <name>bgp-linkstate</name>
+                    </extension>
+                    <extension>
+                        <type xmlns:ribspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">ribspi:extension</type>
+                        <name>bgp-flowspec</name>
+                    </extension>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:base-bgp-rib</type>
+                    <name>base-bgp-rib</name>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:linkstate">prefix:bgp-linkstate</type>
+                    <name>bgp-linkstate</name>
+                    <!-- IANA has issued an early allocation for the BGP Linkstate path attribute (=29).
+                        To preserve (TYPE = 99) set value bellow to false; to use IANA assigned type set the value to true or remove (true by default)-->
+                    <iana-linkstate-attribute-type>true</iana-linkstate-attribute-type>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:flowspec">prefix:bgp-flowspec</type>
+                    <name>bgp-flowspec</name>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-dispatcher-impl</type>
+                    <name>global-bgp-dispatcher</name>
+                    <bgp-extensions>
+                        <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extensions</type>
+                        <name>global-bgp-extensions</name>
+                    </bgp-extensions>
+                    <boss-group>
+                        <type xmlns:netty="urn:opendaylight:params:xml:ns:yang:controller:netty">netty:netty-threadgroup</type>
+                        <name>global-boss-group</name>
+                    </boss-group>
+                    <worker-group>
+                        <type xmlns:netty="urn:opendaylight:params:xml:ns:yang:controller:netty">netty:netty-threadgroup</type>
+                        <name>global-worker-group</name>
+                    </worker-group>
+
+                    <!--
+                         Uncomment this block to enable TCP MD5 Signature support
+
+                    <md5-channel-factory>
+                        <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:tcpmd5:netty:cfg">prefix:md5-channel-factory</type>
+                        <name>md5-client-channel-factory</name>
+                    </md5-channel-factory>
+
+                    <md5-server-channel-factory>
+                        <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:tcpmd5:netty:cfg">prefix:md5-server-channel-factory</type>
+                        <name>md5-server-channel-factory</name>
+                    </md5-server-channel-factory>
+                    -->
+                </module>
+
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-table-type-impl</type>
+                    <name>ipv4-unicast</name>
+                    <afi xmlns:bgp="urn:opendaylight:params:xml:ns:yang:bgp-types">bgp:ipv4-address-family</afi>
+                    <safi xmlns:bgp="urn:opendaylight:params:xml:ns:yang:bgp-types">bgp:unicast-subsequent-address-family</safi>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-table-type-impl</type>
+                    <name>ipv6-unicast</name>
+                    <afi xmlns:bgp="urn:opendaylight:params:xml:ns:yang:bgp-types">bgp:ipv6-address-family</afi>
+                    <safi xmlns:bgp="urn:opendaylight:params:xml:ns:yang:bgp-types">bgp:unicast-subsequent-address-family</safi>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-table-type-impl</type>
+                    <name>linkstate</name>
+                    <afi xmlns:linkstate="urn:opendaylight:params:xml:ns:yang:bgp-linkstate">linkstate:linkstate-address-family</afi>
+                    <safi xmlns:linkstate="urn:opendaylight:params:xml:ns:yang:bgp-linkstate">linkstate:linkstate-subsequent-address-family</safi>
+                </module>
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-table-type-impl</type>
+                    <name>flowspec</name>
+                    <afi xmlns:bgp="urn:opendaylight:params:xml:ns:yang:bgp-types">bgp:ipv4-address-family</afi>
+                    <safi xmlns:flowspec="urn:opendaylight:params:xml:ns:yang:bgp-flowspec">flowspec:flowspec-subsequent-address-family</safi>
+                </module>
+            </modules>
+
+            <services xmlns="urn:opendaylight:params:xml:ns:yang:controller:config">
+                <service>
+                    <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">bgpspi:bgp-peer-registry</type>
+                    <instance>
+                        <name>global-bgp-peer-registry</name>
+                        <provider>/modules/module[type='strict-bgp-peer-registry'][name='global-bgp-peer-registry']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extensions</type>
+                    <instance>
+                        <name>global-bgp-extensions</name>
+                        <provider>/modules/module[type='bgp-extensions-impl'][name='global-bgp-extensions']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:bgpspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:parser:spi">bgpspi:extension</type>
+                    <instance>
+                        <name>base-bgp-parser</name>
+                        <provider>/modules/module[type='base-bgp-parser'][name='base-bgp-parser']</provider>
+                    </instance>
+                    <instance>
+                        <name>bgp-linkstate</name>
+                        <provider>/modules/module[type='bgp-linkstate'][name='bgp-linkstate']</provider>
+                    </instance>
+                    <instance>
+                        <name>bgp-flowspec</name>
+                        <provider>/modules/module[type='bgp-flowspec'][name='bgp-flowspec']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-table-type</type>
+                    <instance>
+                        <name>ipv4-unicast</name>
+                        <provider>/modules/module[type='bgp-table-type-impl'][name='ipv4-unicast']</provider>
+                    </instance>
+                    <instance>
+                        <name>ipv6-unicast</name>
+                        <provider>/modules/module[type='bgp-table-type-impl'][name='ipv6-unicast']</provider>
+                    </instance>
+                    <instance>
+                        <name>linkstate</name>
+                        <provider>/modules/module[type='bgp-table-type-impl'][name='linkstate']</provider>
+                    </instance>
+                    <instance>
+                        <name>flowspec</name>
+                        <provider>/modules/module[type='bgp-table-type-impl'][name='flowspec']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:ribspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">ribspi:extension</type>
+                    <instance>
+                        <name>base-bgp-rib</name>
+                        <provider>/modules/module[type='base-bgp-rib'][name='base-bgp-rib']</provider>
+                    </instance>
+                    <instance>
+                        <name>bgp-linkstate</name>
+                        <provider>/modules/module[type='bgp-linkstate'][name='bgp-linkstate']</provider>
+                    </instance>
+                    <instance>
+                        <name>bgp-flowspec</name>
+                        <provider>/modules/module[type='bgp-flowspec'][name='bgp-flowspec']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:ribspi="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:spi">ribspi:extensions</type>
+                    <instance>
+                        <name>global-rib-extensions</name>
+                        <provider>/modules/module[type='bgp-rib-extensions-impl'][name='global-rib-extensions']</provider>
+                    </instance>
+                </service>
+                <service>
+                    <type xmlns:prefix="urn:opendaylight:params:xml:ns:yang:controller:bgp:rib:impl">prefix:bgp-dispatcher</type>
+                    <instance>
+                        <name>global-bgp-dispatcher</name>
+                        <provider>/modules/module[type='bgp-dispatcher-impl'][name='global-bgp-dispatcher']</provider>
+                    </instance>
+                </service>
+            </services>
+        </data>
+
+    </configuration>
+</snapshot>

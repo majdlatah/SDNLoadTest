@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.opendaylight.vpnservice</groupId>
+  <artifactId>model-bgp</artifactId>
+  <versioning>
+    <release>2013.07.15.7-Lithium</release>
+    <versions>
+      <version>2013.07.15.7-Lithium</version>
+    </versions>
+    <lastUpdated>20150623072602</lastUpdated>
+  </versioning>
+</metadata>

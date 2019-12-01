@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-dlux-0.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <feature name='odl-dlux-all' version='0.2.0-Lithium' description="Opendaylight dlux all features">
+       <feature>odl-dlux-core</feature>
+        <feature>odl-dlux-node</feature>
+        <feature>odl-dlux-yangui</feature>
+        <feature>odl-dlux-yangvisualizer</feature>
+    </feature>
+
+    <feature name='odl-dlux-core' version='0.2.0-Lithium' description="Opendaylight dlux minimal feature">
+        <feature>http</feature>
+        <feature version="1.2.0-Lithium">odl-restconf</feature>
+        <bundle>mvn:com.google.guava/guava/18.0</bundle>
+        <bundle>mvn:org.opendaylight.dlux/loader/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/loader.implementation/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.core/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.login/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.authentication/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.navigation/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.topbar/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.general/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.layout/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.topology/0.2.0-Lithium</bundle>
+    </feature>
+
+
+    <feature name="odl-dlux-node" version='0.2.0-Lithium' description="Enable nodes in Opendaylight dlux">
+        <feature>odl-dlux-core</feature>
+        <bundle>mvn:org.opendaylight.dlux/dlux.node/0.2.0-Lithium</bundle>
+    </feature>
+
+    <feature name="odl-dlux-yangui" version='0.2.0-Lithium' description="Enable Yang UI in Opendaylight dlux">
+        <feature>odl-dlux-core</feature>
+        <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+        <bundle>mvn:org.opendaylight.dlux/dlux.yangui/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.yangutils/0.2.0-Lithium</bundle>
+    </feature>
+
+	<feature name="odl-dlux-yangvisualizer" version='0.2.0-Lithium' description="Enable Yang visualizer in Opendaylight dlux">
+        <feature>odl-dlux-core</feature>
+        <bundle>mvn:org.opendaylight.dlux/dlux.yangvisualizer/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.dlux/dlux.common.yangutils/0.2.0-Lithium</bundle>
+		<bundle>mvn:org.opendaylight.dlux/dlux.common.sigmatopology/0.2.0-Lithium</bundle>
+    </feature>
+
+</features>

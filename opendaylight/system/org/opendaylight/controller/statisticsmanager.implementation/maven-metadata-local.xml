@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.opendaylight.controller</groupId>
+  <artifactId>statisticsmanager.implementation</artifactId>
+  <versioning>
+    <release>0.5.0-Lithium</release>
+    <versions>
+      <version>0.5.0-Lithium</version>
+    </versions>
+    <lastUpdated>20150623072602</lastUpdated>
+  </versioning>
+</metadata>

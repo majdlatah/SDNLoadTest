@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Necessary TODO: Put your copyright statement here
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="openflowplugin-legacy-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+
+    <feature name='odl-openflowplugin-adsal-compatibility-all' version='0.1.0-Lithium' description='OpenDaylight :: openflowplugin :: All'>
+        <feature version='0.1.0-Lithium'>odl-openflowplugin-adsal-compatibility</feature>
+    </feature>
+
+    <feature name='odl-openflowplugin-adsal-compatibility' description="OpenDaylight :: openflowplugin :: AD-SAL Compatibility" version="0.1.0-Lithium">
+      <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+      <feature version="0.1.0-Lithium">odl-openflowplugin-nsf-model</feature>
+      <feature version="0.9.0-Lithium">odl-adsal-all</feature>
+      <bundle>mvn:org.opendaylight.openflowplugin.legacy/sal-compatibility/0.1.0-Lithium</bundle>
+   </feature>
+</features>

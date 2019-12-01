@@ -1,0 +1,39 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-usc-1.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+  <feature name="odl-usc-agent" version="1.0-Lithium" description="OpenDaylight :: USC :: Agent">
+    <bundle>mvn:org.opendaylight.usc/usc-agent/1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-usc-api" version="1.0-Lithium" description="OpenDaylight :: USC :: API">
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.usc/usc-channel-api/1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-usc-channel" version="1.0-Lithium" description="OpenDaylight :: USC :: Channel">
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="1.2.0-Lithium">odl-netconf-connector</feature>
+    <feature version="1.0-Lithium">odl-usc-api</feature>
+    <bundle>mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.usc/usc-netconf-client-dispatcher/1.0-Lithium</bundle>
+    <configfile finalname="etc/usc/certificates/client.key.pem">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/pem/clientkey</configfile>
+    <configfile finalname="etc/usc/certificates/client.pem">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/pem/client</configfile>
+    <configfile finalname="etc/usc/certificates/rootCA.pem">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/pem/rootCA</configfile>
+    <configfile finalname="etc/usc/usc.properties">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/properties/usc</configfile>
+    <configfile finalname="etc/usc/akka.conf">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/conf/akka</configfile>
+    <configfile finalname="etc/opendaylight/karaf/00-usc.xml">mvn:org.opendaylight.usc/usc-channel-impl/1.0-Lithium/xml/config</configfile>
+    <configfile finalname="etc/opendaylight/karaf/01-usc-netconf.xml">mvn:org.opendaylight.usc/usc-netconf-client-dispatcher/1.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-usc-channel-rest" version="1.0-Lithium" description="OpenDaylight :: USC :: Channel :: REST">
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-xsql</feature>
+    <feature version="1.0-Lithium">odl-usc-channel</feature>
+  </feature>
+  <feature name="odl-usc-channel-ui" version="1.0-Lithium" description="OpenDaylight :: USC :: Channel :: UI">
+    <feature version="0.2.0-Lithium">odl-dlux-core</feature>
+    <feature version="1.0-Lithium">odl-usc-channel-rest</feature>
+    <bundle>mvn:org.opendaylight.usc/usc-channel-ui/1.0-Lithium</bundle>
+  </feature>
+</features>

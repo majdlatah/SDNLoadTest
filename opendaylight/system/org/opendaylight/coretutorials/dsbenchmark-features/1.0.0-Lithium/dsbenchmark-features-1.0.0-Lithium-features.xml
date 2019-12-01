@@ -1,0 +1,26 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-dsbenchmark-1.0.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+  <feature name="odl-dsbenchmark-api" version="1.0.0-Lithium" description="OpenDaylight :: dsbenchmark :: api ">
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.coretutorials/dsbenchmark-api/1.0.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-dsbenchmark-impl" version="1.0.0-Lithium" description="OpenDaylight :: dsbenchmark :: impl ">
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="1.0.0-Lithium">odl-dsbenchmark-api</feature>
+    <bundle>mvn:org.opendaylight.coretutorials/dsbenchmark-impl/1.0.0-Lithium</bundle>
+    <configfile finalname="dsbenchmark-impl-default-config.xml">mvn:org.opendaylight.coretutorials/dsbenchmark-impl/1.0.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-dsbenchmark-impl-rest" version="1.0.0-Lithium" description="OpenDaylight :: dsbenchmark :: impl :: REST ">
+    <feature version="1.0.0-Lithium">odl-dsbenchmark-impl</feature>
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+  </feature>
+  <feature name="odl-dsbenchmark-impl-ui" version="1.0.0-Lithium" description="OpenDaylight :: dsbenchmark :: impl :: UI">
+    <feature version="1.0.0-Lithium">odl-dsbenchmark-impl-rest</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-xsql</feature>
+    <feature version="0.2.0-Lithium">odl-dlux-all</feature>
+  </feature>
+</features>

@@ -1,0 +1,76 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-yangtools-0.7.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <feature name="odl-yangtools-all" version="0.7.0-Lithium" description="OpenDaylight Yangtools All">
+    <feature version="0.7.0-Lithium">odl-yangtools-common</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-binding</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-data-binding</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-binding-generator</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-restconf</feature>
+  </feature>
+  <feature name="odl-yangtools-models" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Models">
+    <feature version="0.7.0-Lithium">odl-yangtools-binding</feature>
+    <bundle>mvn:org.opendaylight.yangtools.model/iana-if-type-2014-05-08/2014.05.08.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-inet-types/2010.09.24.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-interfaces/2014.05.08.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-yang-types/2010.09.24.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-yang-types-20130715/2013.07.15.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-restconf/2013.10.19.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/yang-ext/2013.09.07.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/opendaylight-l2-types/2013.08.27.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-ted/2013.10.21.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-topology/2013.10.21.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-topology-isis/2013.10.21.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-topology-ospf/2013.10.21.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-topology-l3-unicast-igp/2013.10.21.7-Lithium</bundle>
+  </feature>
+  <feature name="odl-yangtools-data-binding" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Data Binding">
+    <feature version="0.7.0-Lithium">odl-yangtools-binding</feature>
+    <bundle>mvn:org.opendaylight.yangtools.thirdparty/antlr4-runtime-osgi-nohead/4.0</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-impl/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-operations/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-util/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-model-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-model-util/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-parser-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-parser-impl/0.7.0-Lithium</bundle>
+    <bundle>mvn:com.google.code.gson/gson/2.2.4</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-codec-gson/0.7.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-yangtools-binding" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Binding">
+    <feature version="0.7.0-Lithium">odl-yangtools-common</feature>
+    <bundle>mvn:org.opendaylight.yangtools/yang-binding/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/util/0.7.0-Lithium</bundle>
+    <bundle>mvn:com.github.romix/java-concurrent-hash-trie-map/0.2.23</bundle>
+  </feature>
+  <feature name="odl-yangtools-common" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Common">
+    <bundle>mvn:com.google.guava/guava/18.0</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/concepts/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-common/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/util/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/object-cache-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/object-cache-guava/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/object-cache-noop/0.7.0-Lithium</bundle>
+    <bundle>mvn:com.github.romix/java-concurrent-hash-trie-map/0.2.23</bundle>
+  </feature>
+  <feature name="odl-yangtools-binding-generator" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Binding Generator">
+    <feature version="0.7.0-Lithium">odl-yangtools-data-binding</feature>
+    <bundle>mvn:org.javassist/javassist/3.19.0-GA</bundle>
+    <bundle>mvn:org.apache.commons/commons-lang3/3.1</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-generator-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-generator-impl/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-generator-spi/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-generator-util/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-model-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-type-provider/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/binding-data-codec/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-model-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-model-util/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-parser-api/0.7.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-yangtools-restconf" version="0.7.0-Lithium" description="OpenDaylight :: Yangtools :: Restconf">
+    <bundle>mvn:org.opendaylight.yangtools/restconf-client-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/restconf-client-impl/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/restconf-common/0.7.0-Lithium</bundle>
+  </feature>
+</features>

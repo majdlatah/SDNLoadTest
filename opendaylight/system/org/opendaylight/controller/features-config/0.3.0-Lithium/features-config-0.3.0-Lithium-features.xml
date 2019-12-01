@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-config-0.3.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+
+  <feature name='odl-config-all' version='0.3.0-Lithium' description="OpenDaylight :: Config :: All">
+      <feature version='0.3.0-Lithium'>odl-config-api</feature>
+      <feature version='0.3.0-Lithium'>odl-config-netty-config-api</feature>
+      <feature version='0.3.0-Lithium'>odl-config-core</feature>
+      <feature version='0.3.0-Lithium'>odl-config-manager</feature>
+  </feature>
+
+  <feature name='odl-config-api' version='0.3.0-Lithium' description="OpenDaylight :: Config :: API">
+    <bundle>mvn:org.opendaylight.controller/config-api/0.3.0-Lithium</bundle>
+    <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+    <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+  </feature>
+
+  <feature name='odl-config-netty-config-api' version='0.3.0-Lithium' description="OpenDaylight :: Config :: Netty Config API">
+    <feature version='0.3.0-Lithium'>odl-config-api</feature>
+    <bundle>mvn:org.opendaylight.controller/netty-config-api/0.3.0-Lithium</bundle>
+    <bundle>mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+  </feature>
+
+  <feature name='odl-config-core' version='0.3.0-Lithium' description="OpenDaylight :: Config :: Core">
+    <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+    <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+    <feature version='0.7.0-Lithium'>odl-yangtools-binding-generator</feature>
+    <feature version='0.3.0-Lithium'>odl-config-api</feature>
+    <bundle>mvn:org.opendaylight.controller/config-util/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/yang-jmx-generator/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/shutdown-api/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/shutdown-impl/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.osgi/org.osgi.core/5.0.0</bundle>
+    <bundle>mvn:com.google.guava/guava/18.0</bundle>
+    <bundle>mvn:org.javassist/javassist/3.19.0-GA</bundle>
+  </feature>
+  <feature name='odl-config-manager' version='0.3.0-Lithium' description="OpenDaylight :: Config :: Manager">
+    <feature version='0.3.0-Lithium'>odl-config-core</feature>
+    <bundle>mvn:org.opendaylight.controller/config-manager/0.3.0-Lithium</bundle>
+  </feature>
+</features>

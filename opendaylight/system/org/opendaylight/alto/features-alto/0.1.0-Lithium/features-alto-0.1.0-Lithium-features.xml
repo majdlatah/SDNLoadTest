@@ -1,0 +1,75 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-alto-0.1.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-base/1.5.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.l2switch/features-l2switch/0.2.0-Lithium/xml/features</repository>
+  <feature name="odl-alto-all" version="0.1.0-Lithium" description="OpenDaylight :: alto :: All ">
+    <feature>odl-restconf-all</feature>
+    <feature version="0.1.0-Lithium">odl-alto-provider</feature>
+    <feature version="0.1.0-Lithium">odl-alto-manager</feature>
+    <feature version="0.1.0-Lithium">odl-alto-hosttracker</feature>
+    <feature version="0.1.0-Lithium">odl-alto-northbound</feature>
+  </feature>
+  <feature name="odl-alto-model" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Model ">
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-binding</feature>
+    <bundle>mvn:org.opendaylight.alto/alto-model/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-commons" version="0.1.0-Lithium" description="OpenDaylight :: alto :: utils">
+    <feature version="0.1.0-Lithium">odl-alto-model</feature>
+    <feature version="2.3.2">odl-base-jackson</feature>
+    <feature version="7.0.53">odl-base-tomcat</feature>
+    <bundle>mvn:org.opendaylight.alto/alto-commons/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-provider" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Provider">
+    <feature version="0.1.0-Lithium">odl-alto-model</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="0.2.0-Lithium">odl-l2switch-hosttracker</feature>
+    <feature version="0.2.0-Lithium">odl-l2switch-addresstracker</feature>
+    <configfile finalname="etc/opendaylight/karaf/03-alto.xml">mvn:org.opendaylight.alto/alto-config/0.1.0-Lithium/xml/config</configfile>
+    <bundle>mvn:org.opendaylight.alto/alto-provider/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-hosttracker" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Hosttracker">
+    <feature version="0.1.0-Lithium">odl-alto-model</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="0.2.0-Lithium">odl-l2switch-hosttracker</feature>
+    <feature version="0.2.0-Lithium">odl-l2switch-addresstracker</feature>
+    <configfile finalname="etc/opendaylight/karaf/59-altohosttracker.xml">mvn:org.opendaylight.alto.alto-hosttracker/alto-hosttracker-config/0.1.0-Lithium/xml/config</configfile>
+    <bundle>mvn:org.opendaylight.alto.alto-hosttracker/alto-hosttracker-impl/0.1.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.alto.alto-hosttracker/alto-hosttracker-model/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-manager" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Provider">
+    <feature version="0.1.0-Lithium">odl-alto-commons</feature>
+    <bundle>mvn:org.apache.httpcomponents/httpclient-osgi/4.4.1</bundle>
+    <bundle>mvn:org.apache.httpcomponents/httpcore-osgi/4.4.1</bundle>
+    <bundle>mvn:org.opendaylight.alto/alto-manager/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-services" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Services">
+    <feature version="0.1.0-Lithium">odl-alto-commons</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-common</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="2.3.2">odl-base-jackson</feature>
+    <feature version="0.1.0-Lithium">odl-alto-commons</feature>
+  </feature>
+  <feature name="odl-alto-simple" version="0.1.0-Lithium" description="OpenDaylight :: alto :: Simple">
+    <feature version="0.1.0-Lithium">odl-alto-commons</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-common</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="0.9.0-Lithium">odl-adsal-core</feature>
+    <bundle>mvn:org.opendaylight.alto/service-api-rfc7285/0.1.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/alto-simple.xml">mvn:org.opendaylight.alto/simple-impl/0.1.0-Lithium/xml/config</configfile>
+    <bundle>mvn:org.opendaylight.alto/simple-impl/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-northbound" version="0.1.0-Lithium" description="Opendaylight :: alto :: Northbound">
+    <feature version="1.17">odl-base-jersey</feature>
+    <feature>war</feature>
+    <feature version="0.1.0-Lithium">odl-alto-commons</feature>
+    <feature version="0.1.0-Lithium">odl-alto-simple</feature>
+    <bundle>mvn:org.opendaylight.alto/alto-northbound/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-alto-integration-test" version="0.1.0-Lithium" description="Opendaylight :: alto :: IntegrationTest">
+    <feature version="0.1.0-Lithium">odl-alto-all</feature>
+  </feature>
+</features>

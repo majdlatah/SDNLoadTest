@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<features name="odl-sfclisp-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.sfc/features-sfc/0.1.0-Lithium/xml/features</repository>
+	<repository>mvn:org.opendaylight.lispflowmapping/features-lispflowmapping/1.2.0-Lithium/xml/features</repository>
+
+	<feature name='odl-sfclisp' version='0.1.0-Lithium' description='OpenDaylight :: sfclisp :: all'>
+		<feature version='0.1.0-Lithium'>odl-sfc-provider</feature>
+        <feature version='1.2.0-Lithium'>odl-lispflowmapping-mappingservice</feature>
+        <feature version='1.2.0-Lithium'>odl-lispflowmapping-southbound</feature>
+        <bundle>mvn:org.opendaylight.sfc/sfclisp/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/sfc-lisp-initial.xml">mvn:org.opendaylight.sfc/sfclisp/0.1.0-Lithium/xml/config</configfile>
+	</feature>
+</features>
+

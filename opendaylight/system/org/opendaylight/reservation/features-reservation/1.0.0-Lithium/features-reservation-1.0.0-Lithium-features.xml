@@ -1,0 +1,6 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="reservation-1.0.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <feature name="odl-reservation-models" description="OpenDaylight :: Reservation :: Reservation Service" version="1.0.0-Lithium">
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+  </feature>
+</features>

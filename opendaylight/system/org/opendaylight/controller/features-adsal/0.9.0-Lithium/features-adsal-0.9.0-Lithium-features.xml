@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features name="adsal-0.9.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+   <repository>mvn:org.opendaylight.controller/features-base/1.5.0-Lithium/xml/features</repository>
+   <feature name="odl-adsal-all" description="OpenDaylight AD-SAL All Features" version="0.9.0-Lithium">
+      <feature version="0.9.0-Lithium">odl-adsal-core</feature>
+      <feature version="0.1.0-Lithium">odl-adsal-networkconfiguration</feature>
+      <feature version="0.2.0-Lithium">odl-adsal-connection</feature>
+      <feature version="0.6.0-Lithium">odl-adsal-clustering</feature>
+      <feature version="0.5.0-Lithium">odl-adsal-configuration</feature>
+   </feature>
+   <feature name="odl-adsal-core" description="OpenDaylight :: AD-SAL :: Core" version="0.9.0-Lithium">
+      <feature>odl-base-felix-dm</feature>
+      <feature>odl-base-dummy-console</feature>
+      <feature version="0.9.0-Lithium">odl-adsal-thirdparty</feature>
+      <bundle start="true">mvn:org.apache.commons/commons-lang3/3.1</bundle>
+  <!--    <bundle>mvn:org.osgi/org.osgi.compendium/5.0.0</bundle> -->
+      <bundle>mvn:org.opendaylight.controller/sal/0.9.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal.implementation/0.5.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-adsal-networkconfiguration" description="OpenDaylight :: AD-SAL :: Network Configuration" version="0.1.0-Lithium">
+      <feature>odl-adsal-core</feature>
+      <bundle>mvn:org.opendaylight.controller/sal.networkconfiguration/0.1.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal.networkconfiguration.implementation/0.1.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-adsal-connection" description="OpenDaylight :: AD-SAL :: Connection" version="0.2.0-Lithium">
+      <feature>odl-adsal-core</feature>
+      <bundle>mvn:org.opendaylight.controller/sal.connection/0.2.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal.connection.implementation/0.2.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-adsal-clustering" description="OpenDaylight :: AD-SAL :: Clustering" version="0.6.0-Lithium">
+      <feature>transaction</feature>
+      <feature>odl-base-felix-dm</feature>
+      <feature>odl-base-eclipselink-persistence</feature>
+      <feature version="0.9.0-Lithium">odl-adsal-core</feature>
+      <bundle>mvn:org.opendaylight.controller/clustering.services/0.6.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/clustering.services-implementation/0.5.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-adsal-configuration" description="OpenDaylight :: AD-SAL :: Configuration" version="0.5.0-Lithium">
+      <feature version="0.9.0-Lithium">odl-adsal-core</feature>
+      <feature version="0.6.0-Lithium">odl-adsal-clustering</feature>
+      <bundle>mvn:org.opendaylight.controller/configuration/0.5.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/configuration.implementation/0.5.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-adsal-thirdparty" description="OpenDaylight :: AD-SAL :: Third-Party Depenencies" version="0.9.0-Lithium">
+      <!-- Removed out - causes loop in loggers which polutes logs expotencially
+         <bundle>mvn:org.opendaylight.controller/logging.bridge/0.5.0-Lithium</bundle>
+       -->
+   </feature>
+</features>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Erricson and others.
+ All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-snbi-1.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.controller/features-base/1.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-nsf/0.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+
+    <feature name='odl-snbi-all' version='1.1.0-Lithium' description='OpenDaylight :: snbi :: All'>
+        <feature version='1.1.0-Lithium'>odl-snbi-southplugin</feature>
+        <feature version='1.1.0-Lithium'>odl-snbi-shellplugin</feature>
+        <feature version='1.1.0-Lithium'>odl-snbi-dlux</feature> 
+    </feature>
+
+    <feature name='odl-snbi-southplugin' description='OpenDaylight :: SNBI :: SouthPlugin' version='1.1.0-Lithium'>
+        <feature version='0.7.0-Lithium'>odl-yangtools-all</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.50</bundle>
+        <bundle>mvn:org.opendaylight.snbi/southplugin/1.1.0-Lithium</bundle>
+        <!--
+        <bundle>mvn:org.eclipse.equinox/region/1.0.0.v20110506</bundle>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.50</bundle>
+        <bundle>mvn:org.bouncycastle/bcpkix-jdk15on/1.48</bundle>
+        <bundle>mvn:org.bouncycastle/bcpkix-jdk15on/1.50</bundle>
+        <bundle>mvn:commons-io/commons-io/2.4</bundle>
+        <feature version='0.3.0-Lithium'>odl-config-api</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-all</feature>
+        <bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.48</bundle>
+        <bundle>mvn:org.osgi/org.osgi.core/5.0.0</bundle>
+        <feature version='1.2.0-Lithium'>odl-mdsal-netconf-connector</feature>
+        <feature version='1.2.0-Lithium'>odl-restconf</feature>
+        <feature version='1.2.0-Lithium'>odl-toaster</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-xsql</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <bundle>mvn:org.opendaylight.controller/config-api/0.3.0-Lithium</bundle>
+        <feature version='1.1.0-Lithium'>odl-snbi-southplugin</feature>
+        -->
+    </feature>
+
+    <feature name='odl-snbi-shellplugin' description='OpenDaylight :: SNBI :: ShellPlugin' version='1.1.0-Lithium'>
+        <feature version='1.1.0-Lithium'>odl-snbi-southplugin</feature>
+        <bundle>mvn:org.opendaylight.snbi/shellplugin/1.1.0-Lithium</bundle>
+    </feature>
+    <feature name='odl-snbi-dlux' description='OpenDaylight :: SNBI :: Dlux' version='1.1.0-Lithium'>	
+			<!-- feature version='1.5.0-Lithium'>odl-base-all</feature>	
+			<feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>	
+			<feature version='0.5.0-Lithium'>odl-nsf-all</feature-->
+			<feature version='1.2.0-Lithium'>odl-restconf</feature>
+			<feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>
+                        <feature version='0.5.0-Lithium'>odl-nsf-all</feature>
+			<feature version='0.2.0-Lithium'>odl-dlux-core</feature>
+			<!--feature version='0.2.0-Lithium'>odl-dlux-core</feature-->	
+	</feature>
+
+</features>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-netconf-0.3.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.controller/features-protocol-framework/0.6.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+
+  <feature name='odl-netconf-all' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: All">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-mapping-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-impl</feature>
+    <feature version='0.3.0-Lithium'>odl-config-netconf-connector</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-netty-util</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-client</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-monitoring</feature>
+  </feature>
+
+  <feature name='odl-netconf-api' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: API">
+    <feature version='0.6.0-Lithium'>odl-protocol-framework</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-api/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netconf-auth/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/ietf-netconf-monitoring/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/ietf-netconf/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/ietf-netconf-notifications/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/ietf-netconf-monitoring-extension/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-inet-types/2010.09.24.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-yang-types/2010.09.24.7-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools.model/ietf-yang-types-20130715/2013.07.15.7-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-mapping-api' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Mapping API">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-mapping-api/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-util' version='0.3.0-Lithium'>
+    <feature version='0.3.0-Lithium'>odl-netconf-mapping-api</feature>
+    <bundle>mvn:org.opendaylight.yangtools/yang-model-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.yangtools/yang-data-api/0.7.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netconf-util/0.3.0-Lithium</bundle>
+  </feature>
+    <feature name='odl-netconf-impl' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Impl">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-mapping-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-netty-util</feature>
+    <!-- Netconf server without config connector is just an empty shell -->
+    <feature version='0.3.0-Lithium'>odl-config-netconf-connector</feature>
+    <!-- Netconf will not provide schemas without monitoring -->
+    <feature version='0.3.0-Lithium'>odl-netconf-monitoring</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-notifications-impl</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-impl/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-config-netconf-connector' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Connector">
+    <feature version='0.3.0-Lithium'>odl-config-manager</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-mapping-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-notifications-api</feature>
+    <bundle>mvn:org.opendaylight.controller/config-netconf-connector/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-netty-util' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Netty Util">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-mapping-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-netty-util/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.bouncycastle/bcpkix-jdk15on/1.52</bundle>
+    <bundle>mvn:org.bouncycastle/bcprov-jdk15on/1.52</bundle>
+    <bundle>mvn:org.apache.sshd/sshd-core/0.14.0</bundle>
+    <bundle>mvn:openexi/nagasena/0000.0002.0053.0</bundle>
+    <bundle>mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-handler/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+  </feature>
+  <feature name='odl-netconf-client' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Client">
+    <feature version='0.3.0-Lithium'>odl-netconf-netty-util</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-client/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-monitoring' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Monitoring">
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-monitoring/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-notifications-api' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Notification :: Api">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-notifications-api/0.3.0-Lithium</bundle>
+  </feature>
+  <feature name='odl-netconf-notifications-impl' version='0.3.0-Lithium' description="OpenDaylight :: Netconf :: Monitoring :: Impl">
+    <feature version='0.3.0-Lithium'>odl-netconf-notifications-api</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-util</feature>
+    <feature version='0.7.0-Lithium'>odl-yangtools-binding-generator</feature>
+    <bundle>mvn:org.opendaylight.controller/netconf-notifications-impl/0.3.0-Lithium</bundle>
+  </feature>
+
+</features>

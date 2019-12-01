@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.opendaylight.yangtools.model</groupId>
+  <artifactId>iana-if-type-2014-05-08</artifactId>
+  <versioning>
+    <release>2014.05.08.7-Lithium</release>
+    <versions>
+      <version>2014.05.08.7-Lithium</version>
+    </versions>
+    <lastUpdated>20150623072602</lastUpdated>
+  </versioning>
+</metadata>

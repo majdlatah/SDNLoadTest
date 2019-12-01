@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-integration-0.3.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <!--
+        Concept:
+            This file is a registry of feature repos defined in the projects.
+
+            The intent is to provide a single usable index that will pull in all available features in ODL.
+
+            No features should be defined here, only <repositories> should be listed.
+
+        Directions:
+            1) Make sure your feature file is running the tests and passing them in master:
+                https://wiki.opendaylight.org/view/Karaf:Hands_On_Guide#Existing_Feature_Files
+            2) Add your <repository> below
+            3) Go to the ../pom.xml and
+                a)  Add a dependendy for your feature
+                b)  DO NOT ADD ANYTHING TO THE BOOTFEATURES.
+    -->
+
+
+    <!-- Please add new repository in an alphabetical order -->
+    <repository>mvn:org.opendaylight.aaa/features-aaa/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.aaa/features-aaa-authz/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.aaa/features-aaa-api/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.alto/features-alto/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.bgpcep/features-bgp/0.4.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.bgpcep/features-extras/0.4.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.bgpcep/features-pcep/0.4.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.capwap/capwap-features/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-nsf/0.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.coretutorials/dsbenchmark-features/1.0.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.didm/didm-features/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.groupbasedpolicy/features-groupbasedpolicy/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.iotdm/onem2m-features/0.0.1-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.l2switch/features-l2switch/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.lacp/features-lacp/1.0.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.lispflowmapping/features-lispflowmapping/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.neutron/features-neutron/0.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.nic/features-nic/1.0.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin-li/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin-extension/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin.legacy/features-legacy/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.ovsdb/features-ovsdb/1.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.packetcable/features-packetcable/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.packetcable/features-packetcable-policy/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.persistence/features-persistence/1.0.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.reservation/features-reservation/1.0.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sdninterfaceapp/features-sdninterfaceapp/1.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc-netconf/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc-ovs/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc-sb-rest/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfclisp/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfcofl2/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.snbi/features-snbi/1.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.snmp/features-snmp/1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.snmp4sdn/features-snmp4sdn/0.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sxp/features/1.1-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.tcpmd5/features-tcpmd5/1.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.topoprocessing/features-topoprocessing/0.0.1-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.tsdr/features-tsdr/1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.ttp/features-ttp/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.usc/usc-features/1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.vpnservice/vpnservice-features/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.vtn/features-vtn-manager/0.3.0-Lithium/xml/features</repository>
+</features>

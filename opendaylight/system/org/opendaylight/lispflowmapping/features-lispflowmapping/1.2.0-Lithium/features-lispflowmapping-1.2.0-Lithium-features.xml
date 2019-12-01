@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-lispflowmapping-1.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.neutron/features-neutron/0.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <!-- AD-SAL Northbound deps
+    <repository>mvn:org.opendaylight.controller/features-adsal/${sal.version}/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-nsf/${nsf.version}/xml/features</repository>
+    -->
+
+    <feature name="odl-lispflowmapping-all" description="OpenDaylight :: LISP Flow Mapping :: All" version='1.2.0-Lithium'>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-mappingservice</feature>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-southbound</feature>
+        <!-- <feature version="1.2.0-Lithium">odl-lispflowmapping-netconf</feature> -->
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-neutron</feature>
+    </feature>
+
+    <feature name="odl-lispflowmapping-mappingservice" description="OpenDaylight :: LISP Flow Mapping :: Mapping Service" version='1.2.0-Lithium'>
+        <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+        <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+        <!-- <feature version="${sal.version}">odl-adsal-core</feature> -->
+        <!-- <feature version="${clustering.services.version}">odl-adsal-clustering</feature> -->
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <bundle>mvn:com.google.guava/guava/18.0</bundle>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.yangmodel/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.api/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.implementation/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.shell/1.2.0-Lithium</bundle>
+        <!-- <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.clusterdao/1.2.0-Lithium</bundle> -->
+        <configfile finalname="etc/opendaylight/karaf/lfm-mappingservice.xml">
+            mvn:org.opendaylight.lispflowmapping/mappingservice.implementation/1.2.0-Lithium/xml/config
+        </configfile>
+    </feature>
+
+    <feature name="odl-lispflowmapping-southbound" description="OpenDaylight :: LISP Flow Mapping :: Southbound Plugin" version='1.2.0-Lithium'>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-mappingservice</feature>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.southbound/1.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/lfm-mappingservice-sb.xml">
+            mvn:org.opendaylight.lispflowmapping/mappingservice.southbound/1.2.0-Lithium/xml/config
+        </configfile>
+    </feature>
+
+<!--     <feature name="odl-lispflowmapping-northbound" description="OpenDaylight :: LISP Flow Mapping :: Northbound" version='1.2.0-Lithium'>
+        <feature version="${nsf.version}">odl-adsal-northbound</feature>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-mappingservice</feature>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.northbound/1.2.0-Lithium</bundle>
+    </feature> -->
+
+    <feature name="odl-lispflowmapping-netconf" description="OpenDaylight :: LISP Flow Mapping :: NETCONF" version='1.2.0-Lithium'>
+        <feature version="1.2.0-Lithium">odl-netconf-connector-ssh</feature>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-mappingservice</feature>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.netconf/1.2.0-Lithium</bundle>
+    </feature>
+
+    <feature name="odl-lispflowmapping-neutron" description="OpenDaylight :: LISP Flow Mapping :: Neutron Integration" version='1.2.0-Lithium'>
+        <feature version="0.5.0-Lithium">odl-neutron-service</feature>
+        <feature version="1.2.0-Lithium">odl-lispflowmapping-mappingservice</feature>
+        <bundle>mvn:org.opendaylight.lispflowmapping/mappingservice.neutron/1.2.0-Lithium</bundle>
+    </feature>
+</features>

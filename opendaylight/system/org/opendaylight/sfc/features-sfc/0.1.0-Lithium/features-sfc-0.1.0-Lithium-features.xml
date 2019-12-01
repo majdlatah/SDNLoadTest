@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+
+<!--
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+
+<features name="odl-sfc-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <!-- Add repo entries for the repositories of features you refer to in this feature file but do not define here.  -->
+
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin-extension/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+    <!--<repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>-->
+    <repository>mvn:org.opendaylight.ovsdb/southbound-features/1.1.0-Lithium/xml/features</repository>
+
+    <feature name='odl-sfc-core' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: Core'>
+        <feature version='0.1.0-Lithium'>odl-sfc-provider</feature>
+        <!--<feature version='0.1.0-Lithium'>odl-sfc-model</feature>-->
+    </feature>
+
+    <!--
+        Define your features.  It is useful to list then in order of dependency.  So if A depends on B, list A first.
+        When naming your features please be mindful of the guidelines:
+            https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines
+        Particularly:
+            a) Prefixing names with 'odl-': https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Feature_Naming
+            b) Descriptions: https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Description
+            c) Avoid start-levels: https://wiki.opendaylight.org/view/Runtime:Karaf_Features_Guidelines#Avoid_start-levels
+
+        It's also nice to list inside a feature, first the features it needs, then the bundles it needs, then the configfiles.
+    -->
+
+    <!--<feature name='odl-sfcofl2' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: OpenFlowL2 '>-->
+        <!--<feature version='0.1.0-Lithium'>odl-openflowplugin-all</feature>-->
+        <!--<feature version='0.1.0-Lithium'>odl-openflowplugin-nxm-extensions</feature>-->
+        <!--<feature version='0.1.0-Lithium'>odl-sfc-provider</feature>-->
+        <!--<configfile finalname="etc/opendaylight/karaf/80-sfc.xml">mvn:org.opendaylight.sfc/sfc-config/0.1.0-Lithium/xml/config</configfile>-->
+        <!--<bundle>mvn:org.opendaylight.sfc/sfcofl2/0.1.0-Lithium</bundle>-->
+    <!--</feature>-->
+    <!--
+    <feature name='odl-sfc-ovs' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: OpenvSwitch '>
+        <feature version='1.1.0-Lithium'>odl-ovsdb-southbound-api</feature>
+        <feature version='1.1.0-Lithium'>odl-ovsdb-southbound-impl</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-provider-internal</feature>
+        <configfile finalname="etc/opendaylight/karaf/80-sfc.xml">mvn:org.opendaylight.sfc/sfc-config/0.1.0-Lithium/xml/config</configfile>
+        <bundle>mvn:org.opendaylight.sfc/sfc-ovs/0.1.0-Lithium</bundle>
+    </feature>
+    -->
+    <feature name='odl-sfc-ui' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: UI'>
+        <feature version='0.1.0-Lithium'>odl-sfc-provider</feature>
+        <!--<feature version="1.2.0-Lithium">odl-restconf</feature>-->
+        <feature>http</feature>
+        <!--<feature version='${webconsole.version}'>webconsole</feature>-->
+        <feature>webconsole</feature>
+        <bundle>mvn:org.opendaylight.sfc/sfc-ui/0.1.0-Lithium</bundle>
+    </feature>
+
+    <feature name='odl-sfc-provider' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: Provider '>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <feature version="1.2.0-Lithium">odl-restconf</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-model</feature>
+        <configfile finalname="etc/opendaylight/karaf/80-sfc.xml">mvn:org.opendaylight.sfc/sfc-config/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="configuration/startup/sfc_provider_config.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-function-forwarders.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sff</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-functions.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sf</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-function-chains.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sfc</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-nodes.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sn</configfile>
+        <configfile finalname="configuration/startup/bootstrap/ipfix-class-id.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-ipfix-class-id</configfile>
+        <bundle>mvn:org.opendaylight.controller.model/model-inventory/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.sfc/sfc-provider/0.1.0-Lithium</bundle>
+        <bundle>mvn:ch.qos.logback/logback-core/1.0.9</bundle>
+        <bundle>mvn:ch.qos.logback/logback-classic/1.0.9</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-client/1.17</bundle>
+        <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+        <bundle>wrap:mvn:org.json/json/20131018</bundle>
+        <bundle>mvn:org.codehaus.jettison/jettison/1.3.3</bundle>
+        <bundle>mvn:com.google.code.gson/gson/2.2.4</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-core/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-json-org/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.3.2</bundle>
+        <bundle>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.3.2</bundle>
+        <bundle>mvn:org.glassfish/javax.json/1.0.4</bundle>
+    </feature>
+
+    <feature name='odl-sfc-test-consumer' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: Test :: Consumer '>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-provider</feature>
+        <feature version='0.1.0-Lithium'>odl-sfc-model</feature>
+        <configfile finalname="configuration/startup/sfc_provider_config.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-function-forwarders.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sff</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-functions.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sf</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-function-chains.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sfc</configfile>
+        <configfile finalname="configuration/startup/bootstrap/service-nodes.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-sn</configfile>
+        <configfile finalname="configuration/startup/bootstrap/ipfix-class-id.json">mvn:org.opendaylight.sfc/sfc-jsonconfig/0.1.0-Lithium/xml/config-ipfix-class-id</configfile>
+        <bundle>mvn:org.opendaylight.sfc/sfc-test-consumer/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/sfc-test-consumer-initial.xml">mvn:org.opendaylight.sfc/sfc-test-consumer/0.1.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name='odl-sfc-model' version='0.1.0-Lithium' description='OpenDaylight :: sfc :: Model'>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <feature version='1.1.0-Lithium'>odl-ovsdb-southbound-api</feature>
+        <bundle>mvn:org.opendaylight.sfc/sfc-model/0.1.0-Lithium</bundle>
+    </feature>
+
+</features>

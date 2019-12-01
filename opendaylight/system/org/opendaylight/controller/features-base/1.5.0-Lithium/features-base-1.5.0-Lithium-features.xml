@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features name="odl-base-1.5.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+   <feature name="odl-base-all" description="OpenDaylight Controller" version="1.5.0-Lithium">
+      <feature>http</feature>
+      <feature>transaction</feature>
+      <feature>odl-base-felix-dm</feature>
+      <feature>odl-base-aries-spi-fly</feature>
+      <feature>odl-base-dummy-console</feature>
+      <feature>odl-base-apache-commons</feature>
+      <feature>odl-base-eclipselink-persistence</feature>
+      <feature>odl-base-gemini-web</feature>
+      <feature>odl-base-tomcat</feature>
+      <feature>odl-base-netty</feature>
+      <feature>odl-base-jersey</feature>
+      <feature>odl-base-jackson</feature>
+      <feature>odl-base-spring-security</feature>
+   </feature>
+   <feature name="odl-base-dummy-console" description="Temporary Dummy Console" version="1.2.0-Lithium">
+      <bundle>mvn:org.opendaylight.controller/dummy-console/1.2.0-Lithium</bundle>
+   </feature>
+   <feature name="odl-base-felix-dm" description="Felix Dependency Manager" version="3.1.0">
+      <bundle>mvn:org.osgi/org.osgi.compendium/5.0.0</bundle>
+      <bundle>mvn:org.apache.felix/org.apache.felix.dependencymanager/3.1.0</bundle>
+      <bundle>mvn:org.apache.felix/org.apache.felix.dependencymanager.shell/3.0.1</bundle>
+   </feature>
+   <feature name="odl-base-aries-spi-fly" description="Aries SPI Fly" version="1.0.0">
+      <bundle>mvn:org.apache.aries/org.apache.aries.util/1.1.0</bundle>
+      <bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/1.0.0</bundle>
+      <bundle>mvn:org.ow2.asm/asm-all/4.0</bundle>
+   </feature>
+   <feature name='odl-base-netty' version='4.0.26.Final'>
+      <bundle>wrap:mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+      <bundle>wrap:mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+      <bundle>wrap:mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+      <bundle>wrap:mvn:io.netty/netty-common/4.0.26.Final</bundle>
+      <bundle>wrap:mvn:io.netty/netty-handler/4.0.26.Final</bundle>
+      <bundle>wrap:mvn:io.netty/netty-codec-http/4.0.26.Final</bundle>
+   </feature>
+   <feature name="odl-base-jersey" description="Jersey" version="1.17">
+      <feature>odl-base-gemini-web</feature>
+      <bundle>mvn:com.sun.jersey/jersey-server/1.17</bundle>
+      <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+      <bundle>mvn:com.sun.jersey/jersey-client/1.17</bundle>
+      <bundle>mvn:com.sun.jersey/jersey-servlet/1.17</bundle>
+   </feature>
+   <feature name="odl-base-jersey2-osgi" description="OSGi friendly Jersey" version="4.0">
+      <feature>http</feature>
+      <bundle>mvn:com.eclipsesource.jaxrs/jersey-all/2.8</bundle>
+      <bundle>mvn:com.eclipsesource.jaxrs/publisher/4.0</bundle>
+      <bundle start="true">mvn:javax.ws.rs/javax.ws.rs-api/2.0</bundle>
+      <bundle>mvn:javax.annotation/javax.annotation-api/1.2</bundle>
+    </feature>
+   <feature name="odl-base-jackson" description="Jackson JAX-RS" version="2.3.2">
+      <bundle>mvn:com.sun.jersey/jersey-core/1.17</bundle>
+      <bundle>mvn:com.sun.jersey/jersey-client/1.17</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-annotations/2.3.2</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-core/2.3.2</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-databind/2.3.2</bundle>
+      <bundle start="true">mvn:org.codehaus.jettison/jettison/1.3.3</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.3.2</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.3.2</bundle>
+      <bundle start="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.3.2</bundle>
+   </feature>
+   <feature name="odl-base-slf4j" description="SLF4J Logging" version="1.7.2">
+      <bundle>mvn:org.slf4j/slf4j-jdk14/1.7.2</bundle>
+      <bundle>mvn:org.slf4j/slf4j-nop/1.7.2</bundle>
+      <bundle>mvn:org.slf4j/slf4j-simple/1.7.2</bundle>
+      <bundle start="true">mvn:org.slf4j/slf4j-api/1.7.2</bundle>
+   </feature>
+   <feature name="odl-base-apache-commons" description="Apache Commons Libraries" version="1.5.0-Lithium">
+      <bundle start="true">mvn:com.google.guava/guava/18.0</bundle>
+      <bundle start="true">mvn:org.javassist/javassist/3.19.0-GA</bundle>
+      <bundle start="true">mvn:commons-io/commons-io/2.4</bundle>
+      <bundle start="true">mvn:commons-codec/commons-codec/1.8</bundle>
+      <bundle start="true">mvn:org.apache.commons/commons-lang3/3.1</bundle>
+      <bundle start="true">mvn:commons-net/commons-net/3.0.1</bundle>
+   </feature>
+   <feature name="odl-base-eclipselink-persistence" description="EclipseLink Persistence API" version="2.0.4.v201112161009">
+      <bundle start="true">mvn:eclipselink/javax.persistence/2.0.4.v201112161009</bundle>
+      <bundle start="true">mvn:eclipselink/javax.resource/1.5.0.v200906010428</bundle>
+      <bundle start="true">mvn:org.eclipse.persistence/org.eclipse.persistence.antlr/2.5.0</bundle>
+      <bundle start="true">mvn:org.eclipse.persistence/org.eclipse.persistence.moxy/2.5.0</bundle>
+      <bundle start="true">mvn:org.eclipse.persistence/org.eclipse.persistence.core/2.5.0</bundle>
+   </feature>
+   <feature name="odl-base-gemini-web" description="Gemini Web" version="2.2.0.RELEASE">
+      <feature>http</feature>
+      <feature>transaction</feature>
+      <feature>odl-base-slf4j</feature>
+      <feature>odl-base-felix-dm</feature>
+      <feature>odl-base-jackson</feature>
+      <feature>odl-base-apache-commons</feature>
+      <bundle start="true">mvn:com.google.code.gson/gson/2.2.4</bundle>
+      <bundle start="true">mvn:commons-fileupload/commons-fileupload/1.2.2</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.gemini.web.core/2.2.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.gemini.web.extender/2.2.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.common/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.io/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.math/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.osgi/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.osgi.manifest/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.virgo.util.parser.manifest/3.6.0.RELEASE</bundle>
+      <bundle start="true">mvn:org.apache.felix/org.apache.felix.fileinstall/3.1.6</bundle>
+      <bundle start="true">mvn:orbit/javax.activation/1.1.0.v201211130549</bundle>
+      <bundle start="true">mvn:orbit/javax.annotation/1.1.0.v201209060031</bundle>
+      <bundle start="true">mvn:orbit/javax.ejb/3.1.1.v201204261316</bundle>
+      <bundle start="true">mvn:orbit/javax.el/2.2.0.v201108011116</bundle>
+      <bundle start="true">mvn:orbit/javax.mail.glassfish/1.4.1.v201108011116</bundle>
+      <bundle start="true">mvn:orbit/javax.xml.rpc/1.1.0.v201005080400</bundle>
+      <bundle start="true">mvn:org.eclipse.jetty.orbit/javax.servlet.jsp/2.2.0.v201112011158</bundle>
+      <bundle start="true">mvn:orbit/javax.servlet.jsp.jstl/1.2.0.v201105211821</bundle>
+      <bundle start="true">mvn:orbit/javax.servlet.jsp.jstl.impl/1.2.0.v201210211230</bundle>
+   </feature>
+   <feature name="odl-base-tomcat" description="OpenDaylight Tomcat" version="7.0.53">
+      <feature>odl-base-gemini-web</feature>
+      <feature>odl-base-eclipselink-persistence</feature>
+      <bundle start="true">mvn:orbit/org.apache.catalina/7.0.53.v201406061610</bundle>
+      <bundle start="true">mvn:geminiweb/org.eclipse.gemini.web.tomcat/2.2.0.RELEASE</bundle>
+      <bundle start="true">mvn:orbit/org.apache.catalina.ha/7.0.53.v201406070630</bundle>
+      <bundle start="true">mvn:orbit/org.apache.catalina.tribes/7.0.53.v201406070630</bundle>
+      <bundle start="true">mvn:orbit/org.apache.coyote/7.0.53.v201406070630</bundle>
+      <bundle start="true">mvn:orbit/org.apache.el/7.0.53.v201406060720</bundle>
+      <bundle start="true">mvn:orbit/org.apache.jasper/7.0.53.v201406070630</bundle>
+      <bundle start="true">mvn:orbit/org.apache.juli.extras/7.0.53.v201406060720</bundle>
+      <bundle start="true">mvn:orbit/org.apache.tomcat.api/7.0.53.v201406060720</bundle>
+      <bundle start="true">mvn:orbit/org.apache.tomcat.util/7.0.53.v201406070630</bundle>
+      <bundle start="true" >mvn:org.opendaylight.controller/karaf-tomcat-security/0.5.0-Lithium</bundle>
+      <bundle start="true">wrap:mvn:virgomirror/org.eclipse.jdt.core.compiler.batch/3.8.0.I20120518-2145</bundle>
+   </feature>
+   <feature name="odl-base-spring" description="Opendaylight Spring Support" version="3.1.3.RELEASE">
+      <bundle>mvn:org.ow2.asm/asm-all/4.1</bundle>
+      <bundle>mvn:org.aopalliance/com.springsource.org.aopalliance/1.0.0</bundle>
+      <bundle>mvn:org.springframework/org.springframework.aop/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.asm/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.beans/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.context/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.context.support/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.core/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.expression/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.transaction/3.1.3.RELEASE</bundle>
+   </feature>
+   <feature name="odl-base-spring-web" description="OpenDaylight Spring Web" version="3.1.3.RELEASE">
+      <feature>odl-base-spring</feature>
+      <feature>odl-base-gemini-web</feature>
+      <bundle>mvn:org.springframework/org.springframework.web/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework/org.springframework.web.servlet/3.1.3.RELEASE</bundle>
+   </feature>
+   <feature name="odl-base-spring-security" description="OpenDaylight Spring Security" version="3.1.3.RELEASE">
+      <feature>odl-base-spring-web</feature>
+      <bundle>mvn:org.springframework.security/spring-security-config/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework.security/spring-security-core/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework.security/spring-security-taglibs/3.1.3.RELEASE</bundle>
+      <bundle>mvn:org.springframework.security/spring-security-web/3.1.3.RELEASE</bundle>
+   </feature>
+</features>

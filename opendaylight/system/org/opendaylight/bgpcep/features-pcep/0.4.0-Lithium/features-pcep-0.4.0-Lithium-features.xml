@@ -1,0 +1,93 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-bgpcep-0.4.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.tcpmd5/features-tcpmd5/1.1.0-Lithium/xml/features</repository>
+  <feature name="odl-bgpcep-pcep-all" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-impl</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-stateful02</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-stateful07</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-segment-routing</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-topology</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-topology-provider</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-tunnel-provider</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-programming</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-programming-impl</feature>
+  </feature>
+  <feature name="odl-bgpcep-pcep-dependencies" version="0.4.0-Lithium">
+    <bundle>mvn:com.google.guava/guava/18.0</bundle>
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/concepts/0.4.0-Lithium</bundle>
+    <bundle>mvn:commons-codec/commons-codec/1.8</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/util/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-pcep" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-dependencies</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/rsvp-api/0.4.0-Lithium</bundle>
+    <feature version="1.1.0-Lithium">odl-tcpmd5-netty</feature>
+    <feature version="0.6.0-Lithium">odl-protocol-framework</feature>
+    <feature version="0.3.0-Lithium">odl-config-netty</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-spi/0.4.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/32-pcep.xml">mvn:org.opendaylight.bgpcep/pcep-controller-config/0.4.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-bgpcep-pcep-impl" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep</feature>
+    <bundle>mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-impl/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-programming" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-dependencies</feature>
+    <feature version="0.3.0-Lithium">odl-config-api</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/topology-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/topology-tunnel-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/programming-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/programming-spi/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/programming-topology-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/programming-tunnel-api/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-programming-impl" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-programming</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="1.1.0-Lithium">odl-tcpmd5-netty</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/programming-impl/0.4.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/30-programming.xml">mvn:org.opendaylight.bgpcep/programming-controller-config/0.4.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-bgpcep-pcep-topology" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-programming</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-tunnel-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-topology-api/0.4.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-topology-spi/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-pcep-stateful02" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-impl</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-topology</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-ietf-stateful02/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-pcep-stateful07" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-impl</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-topology</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-ietf-stateful07/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-pcep-topology-provider" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-programming-impl</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-stateful02</feature>
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-stateful07</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-topology-provider/0.4.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/39-pcep-provider.xml">mvn:org.opendaylight.bgpcep/pcep-controller-config/0.4.0-Lithium/xml/config-provider</configfile>
+  </feature>
+  <feature name="odl-bgpcep-pcep-tunnel-provider" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-topology-provider</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-tunnel-provider/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-pcep-segment-routing" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-pcep-stateful07</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/pcep-segment-routing/0.4.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/33-pcep-segment-routing.xml">mvn:org.opendaylight.bgpcep/pcep-controller-config/0.4.0-Lithium/xml/config-segment</configfile>
+  </feature>
+</features>

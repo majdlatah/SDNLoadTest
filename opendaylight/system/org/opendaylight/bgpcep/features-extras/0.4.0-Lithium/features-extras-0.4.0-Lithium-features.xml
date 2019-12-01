@@ -1,0 +1,21 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-bgpcep-0.4.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <feature name="odl-bgpcep-dependencies" version="0.4.0-Lithium">
+    <bundle>mvn:com.google.guava/guava/18.0</bundle>
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.bgpcep/concepts/0.4.0-Lithium</bundle>
+    <bundle>mvn:commons-codec/commons-codec/1.8</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+    <bundle>mvn:org.opendaylight.bgpcep/util/0.4.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-bgpcep-data-change-counter" version="0.4.0-Lithium">
+    <feature version="0.4.0-Lithium">odl-bgpcep-dependencies</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="0.3.0-Lithium">odl-config-api</feature>
+    <configfile finalname="etc/opendaylight/karaf/50-topology-data-change-counter.xml">mvn:org.opendaylight.bgpcep/data-change-counter-controller-config/0.4.0-Lithium/xml/config</configfile>
+    <bundle>mvn:org.opendaylight.bgpcep/data-change-counter/0.4.0-Lithium</bundle>
+  </feature>
+</features>

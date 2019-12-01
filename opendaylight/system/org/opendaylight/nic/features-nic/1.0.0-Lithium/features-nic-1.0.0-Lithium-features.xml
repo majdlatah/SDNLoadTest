@@ -1,0 +1,32 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-nic-1.0.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.vtn/features-vtn-manager/0.3.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.groupbasedpolicy/features-groupbasedpolicy/0.2.0-Lithium/xml/features</repository>
+  <feature name="odl-nic-core" version="1.0.0-Lithium" description="OpenDaylight :: Network Intent Composition :: Core">
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+    <bundle>mvn:org.opendaylight.nic/intentengine-api/1.0.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.nic/intentengine-impl/1.0.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.nic/intentengine-compiler/1.0.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/88-intentengine-impl.xml">mvn:org.opendaylight.nic/intentengine-impl/1.0.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-nic-console" version="1.0.0-Lithium" description="OpenDaylight :: Network Intent Composition :: CLI">
+    <feature version="1.0.0-Lithium">odl-nic-core</feature>
+    <bundle>mvn:org.opendaylight.nic/intentengine-cli/1.0.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-nic-renderer-vtn" version="1.0.0-Lithium" description="OpenDaylight :: Network Intent Composition :: VTN Renderer">
+    <feature version="1.0.0-Lithium">odl-nic-core</feature>
+    <feature version="0.3.0-Lithium">odl-vtn-manager</feature>
+    <bundle>mvn:org.opendaylight.nic/vtn-renderer/1.0.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/89-vtn-renderer.xml">mvn:org.opendaylight.nic/vtn-renderer/1.0.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-nic-renderer-gbp" version="1.0.0-Lithium" description="OpenDaylight :: Network Intent Composition :: Group Based Policy Renderer">
+    <feature version="1.0.0-Lithium">odl-nic-core</feature>
+    <feature version="0.2.0-Lithium">odl-groupbasedpolicy-ofoverlay</feature>
+    <bundle>mvn:org.opendaylight.nic/gbp-renderer-api/1.0.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.nic/gbp-renderer-impl/1.0.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/90-bgp-renderer.xml">mvn:org.opendaylight.nic/gbp-renderer-impl/1.0.0-Lithium/xml/config</configfile>
+  </feature>
+</features>

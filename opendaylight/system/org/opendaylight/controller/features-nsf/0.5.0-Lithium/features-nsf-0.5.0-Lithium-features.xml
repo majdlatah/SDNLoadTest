@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features name="nsf-0.5.0-Lithium"  xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.controller/features-base/1.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+    <feature name="odl-nsf-all" description="OpenDaylight :: NSF :: All Network Service Functions" version="0.5.0-Lithium">
+        <feature version="0.9.0-Lithium">odl-adsal-all</feature>
+        <feature version="0.5.0-Lithium">odl-nsf-managers</feature>
+        <feature version="0.5.0-Lithium">odl-adsal-northbound</feature>
+        <!--
+         TODO : Resolve this in a follow-up commit
+            <feature>odl-controller-web</feature>
+        -->
+    </feature>
+
+    <feature name="odl-nsf-service" description="OpenDaylight :: NSF :: Network Service Functions in Controller" version="0.5.0-Lithium">
+        <feature version="0.9.0-Lithium">odl-adsal-all</feature>
+        <feature version="0.5.0-Lithium">odl-nsf-managers</feature>
+        <feature version="0.5.0-Lithium">odl-adsal-northbound</feature>
+    </feature>
+
+    <feature name="odl-nsf-managers" description="OpenDaylight :: AD-SAL :: Network Service Functions" version="0.5.0-Lithium">
+        <feature version="1.5.0-Lithium">odl-base-all</feature>
+        <feature version="0.9.0-Lithium">odl-adsal-all</feature>
+        <bundle>mvn:org.opendaylight.controller/usermanager/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/usermanager.implementation/0.5.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/appauth/0.5.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/connectionmanager/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/connectionmanager.implementation/0.2.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/containermanager/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/containermanager.implementation/0.6.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/statisticsmanager/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/statisticsmanager.implementation/0.5.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/switchmanager/0.8.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/switchmanager.implementation/0.5.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/forwardingrulesmanager/0.7.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/forwardingrulesmanager.implementation/0.5.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/topologymanager/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/topologymanager.shell/1.1.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/hosttracker/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/hosttracker.implementation/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/hosttracker.shell/1.1.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller/forwarding.staticrouting/0.6.0-Lithium</bundle>
+
+        <bundle>mvn:org.opendaylight.controller.thirdparty/net.sf.jung2/2.0.1</bundle>
+        <bundle>mvn:org.opendaylight.controller/routing.dijkstra_implementation/0.5.0-Lithium</bundle>
+    </feature>
+
+    <feature name="odl-adsal-northbound" description="OpenDaylight :: AD-SAL :: Northbound APIs" version="0.5.0-Lithium">
+        <feature version="1.5.0-Lithium">odl-base-all</feature>
+        <feature version="0.5.0-Lithium">odl-nsf-managers</feature>
+        <bundle>mvn:org.ow2.asm/asm-all/4.1</bundle>
+        <!--
+            TODO : Resolve these in a follow-up commit
+            <bundle>mvn:org.opendaylight.controller/httpservice-bridge/0.1.0-Lithium</bundle>
+            <bundle>mvn:org.opendaylight.controller/jolokia-bridge/0.1.0-Lithium</bundle>
+        -->
+        <bundle>mvn:org.opendaylight.controller/bundlescanner/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/bundlescanner.implementation/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/commons.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/connectionmanager.northbound/0.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/flowprogrammer.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/hosttracker.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/networkconfig.bridgedomain.northbound/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.antlr/2.5.2</bundle>
+        <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.core/2.5.2</bundle>
+        <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.moxy/2.5.2</bundle>
+        <bundle>mvn:org.opendaylight.controller/forwarding.staticrouting.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/statistics.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/subnets.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/switchmanager.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/topology.northbound/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/usermanager.northbound/0.1.0-Lithium</bundle>
+    </feature>
+</features>

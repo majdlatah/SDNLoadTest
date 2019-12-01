@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.opendaylight.sxp</groupId>
+  <artifactId>features</artifactId>
+  <versioning>
+    <release>1.1-Lithium</release>
+    <versions>
+      <version>1.1-Lithium</version>
+    </versions>
+    <lastUpdated>20150623072601</lastUpdated>
+  </versioning>
+</metadata>

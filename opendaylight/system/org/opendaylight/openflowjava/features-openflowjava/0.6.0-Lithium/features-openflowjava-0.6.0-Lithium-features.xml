@@ -1,0 +1,25 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-openflowjava-0.6.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <feature name="odl-openflowjava-all" description="OpenDaylight :: Openflow Java :: All">
+    <feature version="0.6.0-Lithium">odl-openflowjava-protocol</feature>
+  </feature>
+  <feature name="odl-openflowjava-protocol" version="0.6.0-Lithium" description="OpenDaylight :: Openflow Java :: Protocol">
+    <feature version="0.7.0-Lithium">odl-yangtools-common</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-binding</feature>
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <feature version="0.3.0-Lithium">odl-config-api</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-common</feature>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-handler/4.0.26.Final</bundle>
+    <bundle>mvn:org.opendaylight.openflowjava/openflow-protocol-api/0.6.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.openflowjava/openflow-protocol-spi/0.6.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.openflowjava/openflow-protocol-impl/0.6.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.openflowjava/util/0.6.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/45-openflowjava-stats.xml">mvn:org.opendaylight.openflowjava/openflowjava-config/0.6.0-Lithium/xml/configstats</configfile>
+  </feature>
+</features>

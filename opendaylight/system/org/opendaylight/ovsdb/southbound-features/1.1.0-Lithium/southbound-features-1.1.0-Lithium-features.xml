@@ -1,0 +1,36 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-ovsdb-southbound-1.1.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <feature name="odl-ovsdb-southbound-api" version="1.1.0-Lithium" description="OpenDaylight :: southbound :: api ">
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.ovsdb/southbound-api/1.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-ovsdb-southbound-impl" version="1.1.0-Lithium" description="OpenDaylight :: southbound :: impl ">
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="1.1.0-Lithium">odl-ovsdb-southbound-api</feature>
+    <bundle>mvn:org.opendaylight.ovsdb/southbound-impl/1.1.0-Lithium</bundle>
+    <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.3.2</bundle>
+    <bundle>mvn:com.fasterxml.jackson.core/jackson-core/2.3.2</bundle>
+    <bundle>mvn:com.fasterxml.jackson.core/jackson-databind/2.3.2</bundle>
+    <bundle>mvn:com.fasterxml.jackson.datatype/jackson-datatype-json-org/2.3.2</bundle>
+    <bundle>wrap:mvn:org.json/json/20131018</bundle>
+    <bundle>mvn:com.google.code.gson/gson/2.2.4</bundle>
+    <bundle>mvn:io.netty/netty-buffer/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-codec/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-codec-http/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-common/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-handler/4.0.26.Final</bundle>
+    <bundle>mvn:io.netty/netty-transport/4.0.26.Final</bundle>
+    <configfile finalname="etc/opendaylight/karaf/southbound-impl-default-config.xml">mvn:org.opendaylight.ovsdb/southbound-impl/1.1.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-ovsdb-southbound-impl-rest" version="1.1.0-Lithium" description="OpenDaylight :: southbound :: impl :: REST ">
+    <feature version="1.1.0-Lithium">odl-ovsdb-southbound-impl</feature>
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+  </feature>
+  <feature name="odl-ovsdb-southbound-impl-ui" version="1.1.0-Lithium" description="OpenDaylight :: southbound :: impl :: UI">
+    <feature version="1.1.0-Lithium">odl-ovsdb-southbound-impl-rest</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-xsql</feature>
+  </feature>
+</features>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-protocol-framework-0.6.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+  <feature name='odl-protocol-framework' version='0.6.0-Lithium' description="OpenDaylight :: Protocol Framework">
+    <feature version='0.3.0-Lithium'>odl-config-api</feature>
+    <feature version='0.3.0-Lithium'>odl-config-netty-config-api</feature>
+    <bundle>mvn:org.opendaylight.controller/protocol-framework/0.6.0-Lithium</bundle>
+  </feature>
+</features>

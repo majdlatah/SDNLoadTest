@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>orbit</groupId>
+  <artifactId>org.apache.catalina</artifactId>
+  <versioning>
+    <release>7.0.53.v201406061610</release>
+    <versions>
+      <version>7.0.53.v201406061610</version>
+    </versions>
+    <lastUpdated>20150623072602</lastUpdated>
+  </versioning>
+</metadata>

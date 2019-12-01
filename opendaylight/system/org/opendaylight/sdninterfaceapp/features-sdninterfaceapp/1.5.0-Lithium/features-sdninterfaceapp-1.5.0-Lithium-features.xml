@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Copyright (c) 2014 TATA Consultancy Services.  All rights reserved.
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+
+<features name="odl-sdninterfaceapp-1.5.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.controller/features-nsf/0.5.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+
+    <feature name="odl-sdninterfaceapp-all" version="1.5.0-Lithium" description="OpenDaylight :: sdninterfaceapp">
+        <feature version="0.9.0-Lithium">odl-adsal-all</feature>
+        <feature version="0.5.0-Lithium">odl-adsal-northbound</feature>
+        <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-annotations/2.3.2</bundle>
+        <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-core/2.3.2</bundle>
+        <bundle start="true">mvn:com.fasterxml.jackson.core/jackson-databind/2.3.2</bundle>
+        <bundle>mvn:org.jboss.spec.javax.transaction/jboss-transaction-api_1.1_spec/1.0.1.Final</bundle>
+        <bundle>mvn:org.opendaylight.controller/clustering.services/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/hosttracker/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/switchmanager/0.8.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/topologymanager/0.5.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/containermanager/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/statisticsmanager/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.sdninterfaceapp/sdniaggregator/0.6.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.sdninterfaceapp/sdni/0.6.0-Lithium</bundle>
+    </feature>
+</features>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-topoprocessing-0.0.1-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <feature name='odl-topoprocessing-framework' version='0.0.1-Lithium' description="OpenDaylight :: Topology Processing Framework :: Framework">
+        <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <feature version='0.3.0-Lithium'>odl-config-api</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-common</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.opendaylight.topoprocessing/topoprocessing-api/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/topoprocessing-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/topoprocessing-spi/0.0.1-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/80-topoprocessing-config.xml">mvn:org.opendaylight.topoprocessing/topoprocessing-config/0.0.1-Lithium/xml/config</configfile>
+    </feature>
+    <feature name='odl-topoprocessing-mlmt' version='0.0.1-Lithium' description="OpenDaylight :: Topology Processing Framework :: Mlmt">
+        <feature version='0.0.1-Lithium'>odl-topoprocessing-framework</feature>
+        <bundle>mvn:org.opendaylight.controller.model/model-inventory/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller.model/model-topology/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-common-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-common-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/multitechnology-topology-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/multitechnology-topology-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/multilayer-topology-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/multilayer-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-inventory-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-inventory-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-parser-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-parser-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-factory-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-factory-impl/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-observer-model/0.0.1-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.topoprocessing/mlmt-topology-observer-impl/0.0.1-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/60-mlmt-observer-provider-config.xml" override="true">mvn:org.opendaylight.topoprocessing/mlmt-topology-observer-impl/0.0.1-Lithium/xml/config</configfile>
+    </feature>
+</features>

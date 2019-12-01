@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-config-persister-0.3.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-netconf/0.3.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+  <feature name='odl-config-persister-all' version='0.3.0-Lithium' description="OpenDaylight :: Config Persister:: All">
+    <feature version='0.3.0-Lithium'>odl-config-persister</feature>
+    <feature version='0.3.0-Lithium'>odl-config-startup</feature>
+  </feature>
+  <feature name='odl-config-persister' version='0.3.0-Lithium' description="OpenDaylight :: Config Persister ">
+    <feature version='0.3.0-Lithium'>odl-netconf-api</feature>
+    <feature version='0.3.0-Lithium'>odl-config-api</feature>
+    <feature version='0.7.0-Lithium'>odl-yangtools-binding-generator</feature>
+    <bundle>mvn:org.opendaylight.controller/config-persister-api/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/config-persister-file-xml-adapter/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/config-persister-impl/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/config-persister-feature-adapter/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netconf-util/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netconf-mapping-api/0.3.0-Lithium</bundle>
+
+    <bundle>mvn:com.google.guava/guava/18.0</bundle>
+    <bundle>mvn:commons-io/commons-io/2.4</bundle>
+    <bundle>mvn:org.apache.commons/commons-lang3/3.1</bundle>
+    <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.core/2.5.2</bundle>
+    <bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.moxy/2.5.2</bundle>
+  </feature>
+  <feature name='odl-config-startup' version='0.3.0-Lithium' description="OpenDaylight :: Config Persister:: Config Startup">
+    <feature version='0.3.0-Lithium'>odl-config-netconf-connector</feature>
+    <feature version='0.3.0-Lithium'>odl-config-persister</feature>
+    <feature version='0.3.0-Lithium'>odl-netconf-impl</feature>
+  </feature>
+</features>

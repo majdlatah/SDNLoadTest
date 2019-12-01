@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+Copyright (c) 2015 Cisco Systems, Inc. and others.  All rights reserved.
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v1.0 which accompanies this distribution,
+and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-sfc-netconf-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.sfc/features-sfc/0.1.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf-connector/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <feature name='odl-sfc-netconf' version='0.1.0-Lithium' description='OpenDaylight :: Netconf '>
+
+        <feature version='0.1.0-Lithium'>odl-sfc-provider</feature>
+        <!--<feature version='0.1.0-Lithium'>odl-sfc-model</feature>-->
+        <!--<feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>-->
+        <feature version='1.2.0-Lithium'>odl-netconf-connector-all</feature>
+        <feature version='1.2.0-Lithium'>odl-netconf-connector-ssh</feature>
+        <feature version='1.2.0-Lithium'>odl-netconf-mdsal</feature>
+        <!--<feature version="1.2.0-Lithium">odl-restconf</feature>        -->
+        <bundle>mvn:org.opendaylight.sfc/sfc-netconf/0.1.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/sfc-netconf-initial.xml">
+            mvn:org.opendaylight.sfc/sfc-netconf/0.1.0-Lithium/xml/config
+        </configfile>
+    </feature>
+
+    <!-- Optional TODO: Remove TODO Comments -->
+
+</features>
+

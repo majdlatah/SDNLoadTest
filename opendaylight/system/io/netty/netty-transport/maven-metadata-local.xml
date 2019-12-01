@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>io.netty</groupId>
+  <artifactId>netty-transport</artifactId>
+  <versioning>
+    <release>4.0.26.Final</release>
+    <versions>
+      <version>4.0.26.Final</version>
+    </versions>
+    <lastUpdated>20150623072602</lastUpdated>
+  </versioning>
+</metadata>

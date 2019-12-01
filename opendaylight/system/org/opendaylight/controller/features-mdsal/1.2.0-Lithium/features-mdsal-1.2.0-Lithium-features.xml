@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-mdsal-1.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-config/0.3.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-config-persister/0.3.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-config-netty/0.3.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-netconf/0.3.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-akka/1.5.0-Lithium/xml/features</repository>
+    <feature name='odl-mdsal-all' version='1.2.0-Lithium' description="OpenDaylight :: MDSAL :: All">
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker-local</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-xsql</feature>
+        <feature version='1.2.0-Lithium'>odl-toaster</feature>
+    </feature>
+    <feature name='odl-mdsal-common' version='1.2.0-Lithium' description="OpenDaylight :: Config :: All">
+      <feature version='0.7.0-Lithium'>odl-yangtools-data-binding</feature>
+      <bundle>mvn:org.opendaylight.controller/sal-common/1.2.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal-common-api/1.2.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal-common-impl/1.2.0-Lithium</bundle>
+      <bundle>mvn:org.opendaylight.controller/sal-common-util/1.2.0-Lithium</bundle>
+    </feature>
+
+    <!-- TODO move to netconf features, however there are some weird dependencies on features-config-persister all over that cause cyclic dependencies-->
+    <feature name='odl-netconf-mdsal' version='1.2.0-Lithium' description="OpenDaylight :: Netconf :: Mdsal">
+        <feature version='0.3.0-Lithium'>odl-config-all</feature>
+        <feature version='0.3.0-Lithium'>odl-netconf-all</feature>
+        <feature version='0.3.0-Lithium'>odl-config-netty</feature>
+        <bundle>mvn:org.opendaylight.controller/netconf-tcp/0.3.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/netconf-ssh/0.3.0-Lithium</bundle>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.opendaylight.controller/mdsal-netconf-connector/0.3.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/mdsal-netconf-monitoring/0.3.0-Lithium</bundle>
+        <!-- TODO 01-netconf.xml file requires netconf-config-dispatcher to be present and its part of netconf-connector features. Clean Up-->
+        <bundle>mvn:org.opendaylight.controller/netconf-config-dispatcher/0.3.0-Lithium</bundle>
+        <configfile finalname='etc/opendaylight/karaf/01-netconf.xml'>mvn:org.opendaylight.controller/netconf-config/0.3.0-Lithium/xml/config</configfile>
+        <configfile finalname='etc/opendaylight/karaf/08-mdsal-netconf.xml'>mvn:org.opendaylight.controller/netconf-mdsal-config/0.3.0-Lithium/xml/config</configfile>
+    </feature>
+
+    <feature name='odl-mdsal-broker-local' version='1.2.0-Lithium' description="OpenDaylight :: MDSAL :: Broker">
+        <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-common</feature>
+        <feature version='0.3.0-Lithium'>odl-config-startup</feature>
+        <feature version='0.3.0-Lithium'>odl-config-netty</feature>
+        <bundle>mvn:com.lmax/disruptor/3.3.0</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-core-api/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-core-spi/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-broker-impl/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-binding-api/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-binding-config/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-binding-broker-impl/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-binding-util/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-connector-api/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-inmemory-datastore/1.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/01-md-sal.xml">mvn:org.opendaylight.controller/md-sal-config/1.2.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name='odl-toaster' version='1.2.0-Lithium' description="OpenDaylight :: Toaster">
+        <feature version='0.7.0-Lithium'>odl-yangtools-common</feature>
+        <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.opendaylight.controller.samples/sample-toaster/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller.samples/sample-toaster-consumer/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller.samples/sample-toaster-provider/1.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/03-toaster-sample.xml">mvn:org.opendaylight.controller.samples/toaster-config/1.2.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name ='odl-mdsal-xsql' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+        <bundle>mvn:org.opendaylight.controller/sal-dom-xsql/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-karaf-xsql/1.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/04-xsql.xml">mvn:org.opendaylight.controller/sal-dom-xsql-config/1.2.0-Lithium/xml/config</configfile>
+    </feature>
+    <feature name ='odl-mdsal-clustering-commons' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker-local</feature>
+        <feature version='2.3.10'>odl-akka-system</feature>
+        <feature version='2.3.10'>odl-akka-persistence</feature>
+        <bundle>mvn:org.opendaylight.controller/sal-clustering-commons/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller/sal-akka-raft/1.2.0-Lithium</bundle>
+        <bundle>mvn:com.codahale.metrics/metrics-core/3.0.1</bundle>
+    </feature>
+    <feature name ='odl-mdsal-distributed-datastore' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker-local</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-clustering-commons</feature>
+        <feature version='2.3.10'>odl-akka-clustering</feature>
+        <bundle>mvn:org.opendaylight.controller/sal-distributed-datastore/1.2.0-Lithium</bundle>
+    </feature>
+    <feature name ='odl-mdsal-remoterpc-connector' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker-local</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-clustering-commons</feature>
+        <feature version='2.3.10'>odl-akka-clustering</feature>
+        <feature version='0.7'>odl-akka-leveldb</feature>
+        <bundle>mvn:org.opendaylight.controller/sal-remoterpc-connector/1.2.0-Lithium</bundle>
+    </feature>
+    <feature name ='odl-mdsal-broker' version='1.2.0-Lithium'>
+        <feature version='1.2.0-Lithium'>odl-mdsal-remoterpc-connector</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-distributed-datastore</feature>
+        <configfile finalname="etc/opendaylight/karaf/05-clustering.xml">mvn:org.opendaylight.controller/sal-clustering-config/1.2.0-Lithium/xml/config</configfile>
+        <configfile finalname="configuration/initial/akka.conf">mvn:org.opendaylight.controller/sal-clustering-config/1.2.0-Lithium/xml/akkaconf</configfile>
+        <configfile finalname="configuration/initial/module-shards.conf">mvn:org.opendaylight.controller/sal-clustering-config/1.2.0-Lithium/xml/moduleshardconf</configfile>
+        <configfile finalname="configuration/initial/modules.conf">mvn:org.opendaylight.controller/sal-clustering-config/1.2.0-Lithium/xml/moduleconf</configfile>
+        <configfile finalname="etc/org.opendaylight.controller.cluster.datastore.cfg">mvn:org.opendaylight.controller/sal-clustering-config/1.2.0-Lithium/cfg/datastore</configfile>
+    </feature>
+    <feature name ='odl-mdsal-clustering' version='1.2.0-Lithium'>
+      <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+    </feature>
+    <feature name='odl-clustering-test-app' version='1.2.0-Lithium'>
+        <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+        <feature version='1.2.0-Lithium'>odl-mdsal-broker-local</feature>
+        <bundle>mvn:org.opendaylight.controller.samples/clustering-it-model/1.2.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.controller.samples/clustering-it-provider/1.2.0-Lithium</bundle>
+        <configfile finalname="etc/opendaylight/karaf/20-clustering-test-app.xml">mvn:org.opendaylight.controller.samples/clustering-it-config/1.2.0-Lithium/xml/config</configfile>
+    </feature>
+</features>

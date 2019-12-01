@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="openflowplugin-extension-0.1.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+    <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+
+    <feature name="odl-openflowplugin-nxm-extensions" description="OpenDaylight :: Openflow Plugin :: Nicira Extensions" version='0.1.0-Lithium'>
+        <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+        <configfile finalname="etc/opendaylight/karaf/43-openflowjava-nx-config.xml">mvn:org.opendaylight.openflowplugin/openflowplugin-extension-nicira-config/0.1.0-Lithium/xml/config</configfile>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowjava-extension-nicira-api/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowjava-extension-nicira/0.1.0-Lithium</bundle>
+        <bundle>mvn:org.opendaylight.openflowplugin/openflowplugin-extension-nicira/0.1.0-Lithium</bundle>
+    </feature>
+
+</features>

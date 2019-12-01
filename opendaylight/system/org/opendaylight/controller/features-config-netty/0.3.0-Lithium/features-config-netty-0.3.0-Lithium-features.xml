@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<features name="odl-config-persister-0.3.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.controller/features-config-persister/0.3.0-Lithium/xml/features</repository>
+  <feature name='odl-config-netty' version='0.3.0-Lithium' description="OpenDaylight :: Config-Netty">
+    <feature version='0.3.0-Lithium'>odl-config-netty-config-api</feature>
+    <bundle>mvn:org.opendaylight.controller/netty-event-executor-config/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netty-threadgroup-config/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/netty-timer-config/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/threadpool-config-api/0.3.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller/threadpool-config-impl/0.3.0-Lithium</bundle>
+    <feature version='0.3.0-Lithium'>odl-config-startup</feature>
+    <configfile finalname="etc/opendaylight/karaf/00-netty.xml">mvn:org.opendaylight.controller/config-netty-config/0.3.0-Lithium/xml/config</configfile>
+  </feature>
+</features>

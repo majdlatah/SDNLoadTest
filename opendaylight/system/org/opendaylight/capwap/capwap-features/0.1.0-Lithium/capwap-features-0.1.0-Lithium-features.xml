@@ -1,0 +1,19 @@
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="odl-capwap-0.1.0-Lithium" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <feature name="odl-capwap-api" version="0.1.0-Lithium" description="OpenDaylight :: CAPWAP :: API ">
+    <feature version="0.7.0-Lithium">odl-yangtools-models</feature>
+    <bundle>mvn:org.opendaylight.capwap/capwap-api/0.1.0-Lithium</bundle>
+  </feature>
+  <feature name="odl-capwap-impl" version="0.1.0-Lithium" description="OpenDaylight :: CAPWAP :: Impl ">
+    <feature version="1.2.0-Lithium">odl-mdsal-broker</feature>
+    <feature version="0.1.0-Lithium">odl-capwap-api</feature>
+    <bundle>mvn:org.opendaylight.capwap/capwap-impl/0.1.0-Lithium</bundle>
+    <configfile finalname="default-config.xml">mvn:org.opendaylight.capwap/capwap-impl/0.1.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name="odl-capwap-ac-rest" version="0.1.0-Lithium" description="OpenDaylight :: CAPWAP :: AccessController :: REST">
+    <feature version="0.1.0-Lithium">odl-capwap-impl</feature>
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+  </feature>
+</features>

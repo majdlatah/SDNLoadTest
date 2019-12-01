@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="l2switch-0.2.0-Lithium" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+  <repository>mvn:org.opendaylight.openflowplugin/features-openflowplugin/0.1.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+  <repository>mvn:org.opendaylight.dlux/features-dlux/0.2.0-Lithium/xml/features</repository>
+  <feature name='odl-l2switch-all' description="OpenDaylight :: L2Switch :: All" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-switch</feature>
+  </feature>
+  <feature name='odl-l2switch-switch' description="OpenDaylight :: L2Switch :: Switch" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-hosttracker</feature>
+    <bundle>mvn:org.opendaylight.l2switch.main/main-impl/0.2.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/58-l2switchmain.xml">mvn:org.opendaylight.l2switch.main/main-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name='odl-l2switch-switch-rest' description="OpenDaylight :: L2Switch :: Switch" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-switch</feature>
+    <feature version="1.2.0-Lithium">odl-restconf</feature>
+  </feature>
+  <feature name='odl-l2switch-switch-ui' description="OpenDaylight :: L2Switch :: Switch" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-switch-rest</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-apidocs</feature>
+    <feature version="1.2.0-Lithium">odl-mdsal-xsql</feature>
+    <feature version="0.2.0-Lithium">odl-dlux-core</feature>
+  </feature>
+  <feature name='odl-l2switch-hosttracker' description="OpenDaylight :: L2Switch :: HostTracker" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-addresstracker</feature>
+    <bundle>mvn:org.opendaylight.l2switch.hosttracker/hosttracker-model/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.l2switch.hosttracker/hosttracker-impl/0.2.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/57-hosttracker.xml">mvn:org.opendaylight.l2switch.hosttracker/hosttracker-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name='odl-l2switch-addresstracker' description="OpenDaylight :: L2Switch :: AddressTracker" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-arphandler</feature>
+    <bundle>mvn:org.opendaylight.l2switch.addresstracker/addresstracker-model/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.l2switch.addresstracker/addresstracker-impl/0.2.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/56-addresstracker.xml">mvn:org.opendaylight.l2switch.addresstracker/addresstracker-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name='odl-l2switch-arphandler' description="OpenDaylight :: L2Switch :: ArpHandler" version='0.2.0-Lithium'>
+    <feature version="0.2.0-Lithium">odl-l2switch-packethandler</feature>
+    <feature version="0.2.0-Lithium">odl-l2switch-loopremover</feature>
+    <bundle>mvn:org.opendaylight.l2switch.addresstracker/addresstracker-model/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.l2switch.arphandler/arphandler-impl/0.2.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/54-arphandler.xml">mvn:org.opendaylight.l2switch.arphandler/arphandler-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name='odl-l2switch-loopremover' description="OpenDaylight :: L2Switch :: LoopRemover" version='0.2.0-Lithium'>
+    <feature version="0.1.0-Lithium">odl-openflowplugin-flow-services</feature>
+    <bundle>mvn:org.opendaylight.l2switch.loopremover/loopremover-model/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.l2switch.loopremover/loopremover-impl/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.controller.thirdparty/net.sf.jung2/2.0.1</bundle>
+    <configfile finalname="etc/opendaylight/karaf/52-loopremover.xml">mvn:org.opendaylight.l2switch.loopremover/loopremover-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+  <feature name='odl-l2switch-packethandler' description="OpenDaylight :: L2Switch :: PacketHandler" version='0.2.0-Lithium'>
+    <feature version="0.1.0-Lithium">odl-openflowplugin-southbound</feature>
+    <bundle>mvn:org.opendaylight.l2switch.packethandler/packethandler-model/0.2.0-Lithium</bundle>
+    <bundle>mvn:org.opendaylight.l2switch.packethandler/packethandler-impl/0.2.0-Lithium</bundle>
+    <configfile finalname="etc/opendaylight/karaf/50-packethandler.xml">mvn:org.opendaylight.l2switch.packethandler/packethandler-config/0.2.0-Lithium/xml/config</configfile>
+  </feature>
+</features>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ * Copyright (c) 2014 Industrial Technology Research Institute of Taiwan.  All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ *
+-->
+<features name="odl-snmp4sdn" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features</repository>
+
+    <repository>mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features</repository>
+    <!--<repository>mvn:org.opendaylight.controller/features-nsf/0.5.0-Lithium/xml/features</repository>--><!--for odl-adsal-northbound-->
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features</repository>
+    <!--NOT to add snmp4sdn repo, cause recursive loading--><!--<repository>mvn:org.opendaylight.snmp4sdn/features-snmp4sdn/0.2.0-Lithium/xml/features</repository>-->
+
+    <feature name='odl-snmp4sdn-all' version='0.2.0-Lithium' description='OpenDaylight :: SNMP4SDN :: All'>
+        <feature version='0.2.0-Lithium'>odl-snmp4sdn-snmp4sdn</feature>
+    </feature>
+    <feature name='odl-snmp4sdn-snmp4sdn' version='0.2.0-Lithium' description='OpenDaylight :: SNMP4SDN :: Plugin'>
+            <!--these marked are in Helium first release-->
+            <feature version="0.9.0-Lithium">odl-adsal-core</feature>
+            <feature version='0.7.0-Lithium'>odl-yangtools-binding</feature>
+            <feature version='0.7.0-Lithium'>odl-yangtools-models</feature>
+            <feature version='1.2.0-Lithium'>odl-mdsal-broker</feature>
+
+            <feature version='0.9.0-Lithium'>odl-adsal-all</feature><!--TODO: may need not this, odl-adsal-core is enough?-->
+            <!--<feature version='0.5.0-Lithium'>odl-adsal-northbound</feature>-->
+            <feature version='1.2.0-Lithium'>odl-mdsal-apidocs</feature>
+            <feature version='1.2.0-Lithium'>odl-restconf</feature>
+
+            <bundle>mvn:org.opendaylight.snmp4sdn/md-model/0.2.0-Lithium</bundle>
+            <bundle>mvn:org.opendaylight.snmp4sdn/snmp4sdn/0.2.0-Lithium</bundle>
+            <bundle>mvn:org.opendaylight.snmp4sdn/plugin-shell/0.2.0-Lithium</bundle>
+    </feature>
+</features>
+<!--Debugging: Manual commands
+feature:repo-add mvn:org.opendaylight.yangtools/features-yangtools/0.7.0-Lithium/xml/features
+feature:install odl-yangtools-binding
+feature:install odl-yangtools-models
+
+feature:repo-add mvn:org.opendaylight.controller/features-adsal/0.9.0-Lithium/xml/features
+feature:install odl-adsal-core
+
+feature:repo-add mvn:org.opendaylight.controller/features-mdsal/1.2.0-Lithium/xml/features
+feature:install odl-mdsal-broker
+feature:install odl-mdsal-apidocs
+
+feature:repo-add mvn:org.opendaylight.controller/features-restconf/1.2.0-Lithium/xml/features
+feature:install odl-restconf
+
+//activate failure
+feature:repo-add mvn:org.opendaylight.controller/features-nsf/0.5.0-Lithium/xml/features
+feature:install odl-adsal-northbound
+-->

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2014 Dell Inc. and others.  All rights reserved.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<snapshot>
+    <configuration>
+        <data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <modules xmlns="urn:opendaylight:params:xml:ns:yang:controller:config">
+                <module>
+                    <type xmlns:prefix="urn:opendaylight:lacp:lacp-main">
+                        prefix:lacp-main
+                    </type>
+                    <name>lacp-main</name>
+                    <lacp-flow-table-id>0</lacp-flow-table-id>
+                    <lacp-flow-priority>5</lacp-flow-priority>
+                    <lacp-flow-hard-timeout>0</lacp-flow-hard-timeout>
+                    <lacp-flow-idle-timeout>0</lacp-flow-idle-timeout>
+                    <notification-service>
+                    <type xmlns:binding="urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding">
+                       binding:binding-notification-service
+                    </type>
+                   <name>binding-notification-broker</name>
+                   </notification-service>
+                    <data-broker>
+                        <type xmlns:binding="urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding">binding:binding-async-data-broker</type>
+                        <name>binding-data-broker</name>
+                    </data-broker>
+                    <rpc-registry>
+                    <type xmlns:binding="urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding">binding:binding-rpc-registry</type>
+                    <name>binding-rpc-broker</name>
+                    </rpc-registry>
+                </module>
+            </modules>
+        </data>
+    </configuration>
+
+    <required-capabilities>
+        <capability>urn:opendaylight:lacp:lacp-main?module=lacp-main&amp;revision=2014-12-16</capability>
+        <capability>urn:opendaylight:lacp:aggregator?module=lacp-aggregator&amp;revision=2015-01-31</capability>
+        <capability>urn:opendaylight:lacp:node?module=lacp-node&amp;revision=2015-01-31</capability>
+        <capability>urn:opendaylight:lacp:packet?module=lacp-packet&amp;revision=2015-02-10</capability>
+        <capability>urn:opendaylight:lacp:port?module=lacp-port&amp;revision=2015-01-31</capability>
+    </required-capabilities>
+</snapshot>
